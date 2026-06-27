@@ -17,7 +17,7 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/windows3x"
-GAME_NAME="titianic_adventure_out_of_time.conf"
+GAME_NAME="titanic-adventure-out-of-time.conf"
 GAME_DRIVE_FOLDER="drives/d"
 WIN311_URL="https://www.dropbox.com/scl/fi/2b1x6cj30tdqq2me9kzv6/Win311.7z?rlkey=0xvdjybfq2242cry48huoyzsc&dl=0" 
 WIN311_NAME="Win311.7z"
@@ -342,6 +342,7 @@ main(){
         exit 1
     fi
 
+    touch "$ROMs_FOLDER/$GAME_NAME/$CONF_FILE_NAME/drives/noload.txt"
 
     #run Game install
     flatpak run io.github.dosbox-staging -conf "$ROMs_FOLDER/$GAME_NAME/$CONF_FILE_NAME"
