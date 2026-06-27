@@ -342,7 +342,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$CONF_FILE_NAME/drives/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/drives/noload.txt"
 
     #run Game install
     flatpak run io.github.dosbox-staging -conf "$ROMs_FOLDER/$GAME_NAME/$CONF_FILE_NAME"
