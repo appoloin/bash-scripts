@@ -272,7 +272,6 @@ main(){
         zenity --notification --text="Copying Files to ROMs folder" --title="Game Install"
 
         while IFS= read -r FILE; do
-        #for FILE in ${FILES[@]}; do
             # Skip empty lines (if any)
             if [[ -z "$FILE" ]]; then
                 continue
@@ -288,7 +287,6 @@ main(){
                 rm -f -r $ROMs_FOLDER/$GAME_NAME
                 exit 1
             fi
-        #done
         done <<< "$FILES"
 
         zenity --notification --text="Copy Complete" --title="Game Instal"
