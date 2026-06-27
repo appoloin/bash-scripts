@@ -18,6 +18,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/windows3x"
 GAME_NAME="titianic_adventure_out_of_time.conf"
+GAME_DRIVE_FOLDER="drives/d"
 WIN311_URL="https://www.dropbox.com/scl/fi/2b1x6cj30tdqq2me9kzv6/Win311.7z?rlkey=0xvdjybfq2242cry48huoyzsc&dl=0" 
 WIN311_NAME="Win311.7z"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/titanic-adventure-out-of-time/titnanic-adventure-out-of-time.conf"
@@ -193,6 +194,7 @@ select_image_files() {
                    --multiple \
                    --width=800 \
                    --height=500 \
+                   --separator=$'\n' \
                    --filename="$HOME/Downloads" \
                    --title="Select CD image files" \
                    --file-filter="CD IMAGE | *.iso *.cue *.bin *.mp3" )
@@ -202,19 +204,8 @@ select_image_files() {
         exit 1
     fi
 
-    # Split the selected files into an array
-    local selected_files=($files)
-
-    # Check each file's extension
-    for file in "${selected_files[@]}"; do
-        if [[ ! "$file" == *."$file_type" ]]; then
-            zenity --error --text="Error: '$file' is not a valid $file_type file."
-            exit 1
-        fi
-    done
-
     # Return the selected files
-    FILES="${selected_files[@]}"
+    FILES="${files}"
 }
 
 
@@ -276,21 +267,31 @@ main(){
         fi
 
         #Create cdrom folder in Doxbox bottle
-        mkdir -p "$ROMs_FOLDER/$GAME_NAME/drives/d"
+        mkdir -p "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
 
-        zenity --notification --text="Copying Files to ROMs folder" --title="Notification"
+        zenity --notification --text="Copying Files to ROMs folder" --title="Game Install"
 
-        #copy iso to ROMs folder
-        cp "$FILE $ROMs_FOLDER/$GAME_NAME/drives/d"
-        if [$? -ne 0 ]; then
-            echo "COPY Failed. Exiting.\n  $FILE to  $ROMs_FOLDER/$GAME_NAME/drives/d"
-            zenity --error --text="COPY failed: \n   $FILE \n to  \n $ROMs_FOLDER/$GAME_NAME/drives/d"
-            #remove Game folder from ROMs/window3x directory
-            rm -f -r $ROMs_FOLDER/$GAME_NAME
-            exit 1
-        fi
+        while IFS= read -r FILE; do
+        #for FILE in ${FILES[@]}; do
+            # Skip empty lines (if any)
+            if [[ -z "$FILE" ]]; then
+                continue
+            fi
 
-        zenity --notification --text="Copy Complete" --title="Notification"
+            echo "Processing: $FILE"
+            #copy iso to ROMs folder
+            cp "$FILE" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
+            if [ $? -ne 0 ]; then
+                echo "COPY Failed. Exiting.\n  $FILE to  $ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
+                zenity --error --text="COPY failed: \n   $FILE \n to  \n $ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
+                #remove Game folder from ROMs/window3x directory
+                rm -f -r $ROMs_FOLDER/$GAME_NAME
+                exit 1
+            fi
+        #done
+        done <<< "$FILES"
+
+        zenity --notification --text="Copy Complete" --title="Game Instal"
 
 
     elif  [[ $RADIO_OPTION -eq 2 ]]; then #Archive
@@ -308,23 +309,21 @@ main(){
 
         #create game bottle
         mkdir -p $ROMs_FOLDER/$GAME_NAME
-
-        echo "25"
         
-        zenity --notification --text="Extracting Game Archive" --title="Notification"
+        zenity --notification --text="Extracting Game Archive" --title="Game Install"
 
-        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/drives/d" "e"
+        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER" "e"
         if [ $? -ne 0 ]; then 
             #remove Game folder from ROMs/window3x directory
             rm -f -r $ROMs_FOLDER/$GAME_NAME
             exit 1
         fi
         
-        zenity --notification --text="Extraction complete" --title="Notification"
+        zenity --notification --text="Extraction complete" --title="Game Install"
 
     fi
 
-    zenity --notification --text="Downloadind Windows 3.11 WFW" --title="Notification"
+    zenity --notification --text="Downloading Windows 3.11 WFW" --title="Game Install"
 
     #download Windows 3 and install to ESDE ROMS Window3x folder 
     download_and_install_windows
@@ -334,7 +333,7 @@ main(){
         exit 1
     fi
 
-    zenity --notification --text="Windows 3.11 WFW install complete" --title="Notification"
+    zenity --notification --text="Windows 3.11 WFW install complete" --title="Game Install"
 
     #Download conf file from github
     download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$GAME_NAME" "$CONF_FILE_NAME"
@@ -348,6 +347,8 @@ main(){
 
     #run Game install
     flatpak run io.github.dosbox-staging -conf "$ROMs_FOLDER/$GAME_NAME/$CONF_FILE_NAME"
+
+    zenity --notification --text="Game install complete" --title="Game Install"
 }
 
 
