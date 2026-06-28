@@ -222,7 +222,7 @@ get_source_type () {
         *)
             echo "Unknown selection: $SELECTED"
             RADIO_OPTION=0
-            exit 1
+            return 1
             ;;
     esac
 
