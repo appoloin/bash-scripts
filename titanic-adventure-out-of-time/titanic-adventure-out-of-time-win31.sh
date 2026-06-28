@@ -21,7 +21,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/windows3x"
 GAME_NAME="titanic-adventure-out-of-time.conf"
 GAME_DRIVE_FOLDER="drives/d"
-WIN311_URL="https://www.dropbox.com/scl/fi/2b1x6cj30tdqq2me9kzv6/Win311.7z?rlkey=0xvdjybfq2242cry48huoyzsc&dl=0" 
+WIN311_URL="https://www.dropbox.com/scl/fi/2b1x6cj30tdqq2me9kzv6/Win311.7z?rlkey=0xvdjybfq2242cry48huoyzsc&dl=1" 
 WIN311_NAME="Win311.7z"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/titanic-adventure-out-of-time/titanic-adventure-out-of-time.conf"
 CONF_FILE_NAME="titanic-adventure-out-of-time.conf"
@@ -45,7 +45,7 @@ extract_archive() {
     # Check if the archive file exists
     if [ ! -f "$ARCHIVE_PATH" ]; then
         zenity --error --text="Archive not found: $ARCHIVE_PATH"
-        exit 1
+        return 1
     fi
 
     # Extract the archive
@@ -80,27 +80,27 @@ extract_archive() {
             ;;
         1)
             zenity --error --text="Warning: One or more files were not extracted \n$ARCHIVE_PATH"
-            exit 1
+            return 1
             ;;
         2)
             zenity --error --text="Fatal error: Archive is corrupted or not a valid 7z file. \n$ARCHIVE_PATH"
-            exit 1
+            return 1
             ;;
         7)
             zenity --error --text="Command-line error: Invalid arguments or syntax."
-            exit 1
+            return 1
             ;;
         8)
             zenity --error --text="Not enough memory for the operation."
-            exit 1
+            return 1
             ;;
         9)
             zenity --error --text="Archive is encrypted and no password was provided. \n$ARCHIVE_PATH"
-            exit 1
+            return 1
             ;;
         *)
             zenity --error --text="Unknown error occurred while extracting the archive. \n$ARCHIVE_PATH"
-            exit 1
+            return 1
             ;;
     esac
 }
@@ -132,26 +132,6 @@ download_file() {
 }
 
 
-download_and_install_windows() {
-
-    #get Win311 archive from dropbox
-    download_file "$WIN311_URL" "$ROMs_FOLDER/$GAME_NAME" "$WIN311_NAME" 
-    # Check if wget succeeded
-    if [ $? -ne 0 ]; then
-        exit 1
-    fi
-
-    #extract to ROMs/Windows3x/Game folder  
-    extract_archive "$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME" "$ROMs_FOLDER/$GAME_NAME" "x"
-    if [ $? -ne 0 ]; then
-        exit 1
-    fi
-
-    #deleted downloaded zip
-    rm -f "$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME"
-}
-
-
 #Get the loaction the archive files 
 select_archive() {
     #Get ONLY ONE file
@@ -168,7 +148,7 @@ select_archive() {
 
     # Exit if user cancels
     if [ $? -ne 0 ]; then 
-        exit 1 
+        return 1 
     fi
     
     local MIME_TYPE
@@ -179,7 +159,7 @@ select_archive() {
     if [[ ! $MIME_TYPE =~ $ARCHIVE_MIME ]]; then
         echo "Wrong file type selected"
         zenity --error --text="Error: '$FILE' \nis not a valid \n$ARCHIVE_MIME \nfile \n(MIME type: $MIME_TYPE)."
-        exit 1
+        return 1
     fi
 
     # Return the selected archive
@@ -203,7 +183,7 @@ select_image_files() {
 
     # Exit if user cancels
     if [ $? -ne 0 ]; then
-        exit 1
+        return 1
     fi
 
     # Return the selected files
@@ -229,7 +209,7 @@ get_source_type () {
 
     # Check if user canceled
     if [ $? -ne 0 ]; then 
-        exit 1 
+        return 1 
     fi
 
     case "$SELECTED" in
@@ -315,6 +295,7 @@ main(){
         extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER" "e"
         if [ $? -ne 0 ]; then 
             #remove Game folder from ROMs/window3x directory
+            zenity --error --text="Error: Archive extraction failed \n$FILES"
             rm -f -r $ROMs_FOLDER/$GAME_NAME
             exit 1
         fi
@@ -325,10 +306,21 @@ main(){
 
     zenity --notification --text="Downloading Windows 3.11 WFW" --title="Game Install"
 
-    #download Windows 3 and install to ESDE ROMS Window3x folder 
-    download_and_install_windows
+    #get Win311 archive from dropbox
+    download_file "$WIN311_URL" "$ROMs_FOLDER/$GAME_NAME" "$WIN311_NAME" 
+    # Check if wget succeeded
     if [ $? -ne 0 ]; then
-        echo "Download failed. Exiting."
+        echo "Windows download failed. Exiting."
+        zenity --error --text="Error: Windows Download failed \n$WIN311_URL"
+        rm -f -r $ROMs_FOLDER/$GAME_NAME
+        exit 1
+    fi
+
+    #extract to ROMs/Windows3x/Game folder  
+    extract_archive "$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME" "$ROMs_FOLDER/$GAME_NAME" "x"
+    if [ $? -ne 0 ]; then
+        echo "Windows extraction failed. Exiting."
+        zenity --error --text="Error: Windows extraction failed \n$WIN311_URL$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME"
         rm -f -r $ROMs_FOLDER/$GAME_NAME
         exit 1
     fi
@@ -340,6 +332,7 @@ main(){
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
         echo "Failed to download: '$CONF_FILE'"
+        zenity --error --text="Error: Conf download failed \n$CONF_FILE"
         rm -f -r $ROMs_FOLDER/$GAME_NAME
         exit 1
     fi
