@@ -2,7 +2,9 @@
 
 #Game        : Titantic Adventure Out of Time
 #
-#Platform    : Dosbox / Win3.11 
+#Source      : CDRom 
+#
+#Runner      : Dosbox / Win3.11 
 #
 #Description : This script will create a Window 3.11 bottle and install the Game files.
 #              1: Get Game file(s) either an iso(s) or archive 
