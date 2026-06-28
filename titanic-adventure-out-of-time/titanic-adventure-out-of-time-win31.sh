@@ -127,7 +127,7 @@ download_file() {
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
         zenity --error --text="Failed to download \nCheck the URL or your internet connection."
-        exit 1
+        return 1
     fi
 }
 
