@@ -23,7 +23,7 @@ GAME_NAME="titanic-adventure-out-of-time.conf"
 GAME_DRIVE_FOLDER="drives/d"
 WIN311_URL="https://www.dropbox.com/scl/fi/2b1x6cj30tdqq2me9kzv6/Win311.7z?rlkey=0xvdjybfq2242cry48huoyzsc&dl=1" 
 WIN311_NAME="Win311.7z"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/titanic-adventure-out-of-time/titanic-adventure-out-of-time.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/Win311/titanic-adventure-out-of-time/titanic-adventure-out-of-time.conf"
 CONF_FILE_NAME="titanic-adventure-out-of-time.conf"
 
 #Global
