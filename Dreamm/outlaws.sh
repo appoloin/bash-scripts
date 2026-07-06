@@ -2,7 +2,7 @@
 
 #Game        : Outlaws
 #
-#Source      : Archive
+#Source      : Archive / CD image
 #
 #Runner      : Dreamm
 #
@@ -10,7 +10,6 @@
 #              1: Get Game  Archive location
 #              2: Create Game folder  in ROMS/PC add exe extenstion to folder name (ESDE needs this)
 #              3: Extract Game Archive if used
-#              4: Set Dreamm Install Location
 #              5: Use Dreamm to Install files
 
 
