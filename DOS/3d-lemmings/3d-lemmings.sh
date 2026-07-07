@@ -2,12 +2,12 @@
 
 #Game        : 3D lemmings
 #
-#Source      : Archive / CD image
+#Source      : EXO DOS Archive
 #
 #Runner      : DosBox
 #
 #Description : This script will extract the GOG installer into ROMs/PC folder .
-#              1: Get Game file(s) either an Archived  or CD image 
+#              1: Get Game file(s) either an Archived 
 #              2: Create Game folder  in ROMS/dos add conf extenstion to folder name (ESDE needs this)
 #              3: Extract Game Archive if used
 
@@ -15,16 +15,14 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="3d-lemmings.conf"
-GAME_DRIVE_FOLDER="drives/d"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/Win311/titanic-adventure-out-of-time/titanic-adventure-out-of-time.conf"
-CONF_FILE_NAME="titanic-adventure-out-of-time.conf"
+GAME_DRIVE_D_FOLDER="drives/CD"
+GAME_DRIVE_C_FOLDER="drives"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/3d-lemmings/3d-lemmings.conf"
+CONF_FILE_NAME="3d-lemmings.conf"
 TEMP_FOLDER="temp"
-FILE_FILTER="-ir!*.cue -ir!*.bin"
-
 
 #Global
 FILES=""  #Game File Location
-RADIO_OPTION=0 #CD Image = 1;  Archive = 2
 
 
 #extract archive  
@@ -192,115 +190,33 @@ select_cd_image_files() {
 
 
 
-get_source_type () {
-    # Show the radio dialog
-    local SELECTED
-    SELECTED=$(zenity --list \
-                      --radiolist \
-                      --title="Select Source Type" \
-                      --text="Choose source of game files:" \
-                      --column="Select" \
-                      --column="Source" \
-                      FALSE "CD Image" \
-                      FALSE "Archive" )
-    
-
-    # Check if user canceled
-    if [ $? -ne 0 ]; then 
-        return 1 
-    fi
-
-    case "$SELECTED" in
-        "CD Image")
-            RADIO_OPTION=1
-            ;;
-        "Archive")
-            RADIO_OPTION=2
-            ;;
-        *)
-            echo "Unknown selection: $SELECTED"
-            RADIO_OPTION=0
-            return 1
-            ;;
-    esac
-
-}
-
-
 main(){
-    get_source_type
+
+
+    select_archive  #Get Archive location
     if [ $? -ne 0 ]; then
         echo "Error Selecting File"
         exit 1
     fi
 
-    if [[ $RADIO_OPTION -le 0 ]]; then
-        echo "Selected: $RADIO_OPTION"
-        zenity --error --text="Error: Selction Unknown : $RADIO_OPTION"
-        exit 1
-    elif  [[ $RADIO_OPTION -eq 1 ]]; then #CD IMAGE
-
-        select_cd_image_files   #one or more files returned
-        if [ $? -ne 0 ]; then
-            echo "Error Selecting File"
-            exit 1
-        fi
-
-        #Create cdrom folder in Doxbox bottle
-        mkdir -p "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
-
-        zenity --notification --text="Copying Files to ROMs folder" --title="Game Install"
-
-        while IFS= read -r FILE; do
-            # Skip empty lines (if any)
-            if [[ -z "$FILE" ]]; then
-                continue
-            fi
-
-            echo "Processing: $FILE"
-            #copy iso to ROMs folder
-            cp "$FILE" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
-            if [ $? -ne 0 ]; then
-                echo "COPY Failed. Exiting.\n  $FILE to  $ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
-                zenity --error --text="COPY failed: \n   $FILE \n to  \n $ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER"
-                #remove Game folder from ROMs/window3x directory
-                rm -f -r $ROMs_FOLDER/$GAME_NAME
-                exit 1
-            fi
-        done <<< "$FILES"
-
-        zenity --notification --text="Copy Complete" --title="Game Instal"
-
-
-    elif  [[ $RADIO_OPTION -eq 2 ]]; then #Archive
-
-        select_archive  #Get Archive location
-        if [ $? -ne 0 ]; then
-            echo "Error Selecting File"
-            exit 1
-        fi
-
+    echo "Selected File $FILES"
+    if [ -z "$FILES" ]; then
         echo "Selected File $FILES"
-        if [ -z "$FILES" ]; then
-            echo "Selected File $FILES"
-        fi
-
-        #create game bottle
-        mkdir -p $ROMs_FOLDER/$GAME_NAME
-        
-        zenity --notification --text="Extracting Game Archive" --title="Game Install"
-
-        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_FOLDER" "e" "$ILE_FILTER"
-        if [ $? -ne 0 ]; then 
-            #remove Game folder from ROMs/dox directory
-            zenity --error --text="Error: Archive extraction failed \n$FILES"
-            rm -f -r $ROMs_FOLDER/$GAME_NAME
-            exit 1
-        fi
-        
-        zenity --notification --text="Extraction complete" --title="Game Install"
-
     fi
+
+    #create game bottle
+    mkdir -p "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER"
+  
+    zenity --notification --text="Extracting Game Archive" --title="Game Install"
+
+    extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER" "x"
+    if [ $? -ne 0 ]; then 
+        #remove Game folder from ROMs/dox directory
+        zenity --error --text="Error: Archive extraction failed \n$FILES"
+        rm -f -r $ROMs_FOLDER/$GAME_NAME
+        exit 1
+    fi    
+    zenity --notification --text="Extraction complete" --title="Game Install"
 
     #Download conf file from github
     download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$GAME_NAME" "$CONF_FILE_NAME"
@@ -315,7 +231,7 @@ main(){
     touch "$ROMs_FOLDER/$GAME_NAME/drives/noload.txt"
 
     #run Game install
-    flatpak run io.github.dosbox-staging -conf "$ROMs_FOLDER/$GAME_NAME/$CONF_FILE_NAME"
+    flatpak run io.github.dosbox-staging -conf "$ROMs_FOLDER/$GAME_NAME/$CONF_SETUP_FILE_NAME"
 
     zenity --notification --text="Game install complete" --title="Game Install"
 }
