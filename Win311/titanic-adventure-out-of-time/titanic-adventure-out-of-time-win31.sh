@@ -320,7 +320,7 @@ main(){
     extract_archive "$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME" "$ROMs_FOLDER/$GAME_NAME" "x"
     if [ $? -ne 0 ]; then
         echo "Windows extraction failed. Exiting."
-        zenity --error --text="Error: Windows extraction failed \n$WIN311_URL$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME"
+        zenity --error --text="Error: Windows extraction failed \n$ROMs_FOLDER/$GAME_NAME/$WIN311_NAME"
         rm -f -r $ROMs_FOLDER/$GAME_NAME
         exit 1
     fi
