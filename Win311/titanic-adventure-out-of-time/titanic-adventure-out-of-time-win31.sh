@@ -169,7 +169,7 @@ select_archive() {
 
 
 #GET Location of CD images iso, cue/bin
-select_image_files() {
+select_cd_image_files() {
     # Use zenity to select files
     local files
     files=$(zenity --file-selection \
@@ -242,7 +242,7 @@ main(){
         exit 1
     elif  [[ $RADIO_OPTION -eq 1 ]]; then #CD IMAGE
 
-        select_image_files   #one or more files returned
+        select_cd_image_files   #one or more files returned
         if [ $? -ne 0 ]; then
             echo "Error Selecting File"
             exit 1
