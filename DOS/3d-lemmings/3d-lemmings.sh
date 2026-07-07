@@ -15,8 +15,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="3d-lemmings.conf"
-GAME_DRIVE_D_FOLDER="drives/CD"
-GAME_DRIVE_C_FOLDER="drives"
+GAME_DRIVE_C_FOLDER="Lemmings 3D (1995)"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/3d-lemmings/3d-lemmings.conf"
 CONF_FILE_NAME="3d-lemmings.conf"
 TEMP_FOLDER="temp"
@@ -203,13 +202,10 @@ main(){
     if [ -z "$FILES" ]; then
         echo "Selected File $FILES"
     fi
-
-    #create game bottle
-    mkdir -p "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER"
   
     zenity --notification --text="Extracting Game Archive" --title="Game Install"
 
-    extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER" "x"
+    extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/" "x"
     if [ $? -ne 0 ]; then 
         #remove Game folder from ROMs/dox directory
         zenity --error --text="Error: Archive extraction failed \n$FILES"
@@ -228,10 +224,8 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/drives/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
 
-    #run Game install
-    flatpak run io.github.dosbox-staging -conf "$ROMs_FOLDER/$GAME_NAME/$CONF_SETUP_FILE_NAME"
 
     zenity --notification --text="Game install complete" --title="Game Install"
 }
