@@ -15,8 +15,8 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
-GAME_NAME="toltecs-1.scummvm"
-SCUMMVM_NAME="toltecs-1"
+GAME_NAME="toltecs.scummvm"
+SCUMMVM_NAME="toltecs"
 TEMP_FOLDER="temp"
 FILE_FILTER="-ir!SAMPLE.AD -ir!SAMPLE.OPL -ir!WESTERN"
 
