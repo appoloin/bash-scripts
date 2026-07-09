@@ -2,7 +2,7 @@
 
 #Game        : Titantic Adventure Out of Time
 #
-#Source      : CDRom 
+#Source      : Archive / CDRom 
 #
 #Runner      : Dosbox / Win3.11 
 #
