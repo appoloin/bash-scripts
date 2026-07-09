@@ -20,7 +20,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/windows3x"
 GAME_NAME="9-the-last-resort.conf"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/Win311/titanic-adventure-out-of-time/titanic-adventure-out-of-time.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/Win311/9-the-last-resort/9-the-last-resort.conf"
 CONF_FILE_NAME="9-the-last-resort.conf"
 
 #Global
