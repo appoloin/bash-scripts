@@ -7,19 +7,14 @@
 #Runner      : Dosbox / Win3.11 
 #
 #Description : This script will create a Window 3.11 bottle and install the Game files.
-#              1: Get Game file(s) either an iso(s) or archive 
-#              2: Donwload a preinstalled Windows 3.11 bottle (url defined in WIN311_URL)
-#              3: Create a sub folder (name defined in GAME_NAME) in  ES-DE's ROMs folder (path defined in ROMs_FOLDER)
-#              4: Extreact Windows into a subfolder of ES-DE's ROMs folder (path defined in ROMs_FOLDER/GAME_NAME )
-#              5: Add folder named d to drives folder (ROMs_FOLDER/GAME_NAME/drives/d). Copy iso or extract archive 
-#                 into this new folder
-#              6: Downlaod Dosbox conf file from Github  (url defined in CONF_FILE)
-#              7: Run Dosbox using conf file, running the games install program
+#              1: Get Game archive 
+#              2: Create a sub folder (name defined in CONF_FILE_NAME) in  ES-DE's ROMs folder (path defined in ROMs_FOLDER)
+#              3: Extract archive
+#              4: Downlaod Dosbox conf file from Github  (url defined in CONF_FILE)
 
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/windows3x"
-GAME_NAME="9-the-last-resort.conf"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/Win311/9-the-last-resort/9-the-last-resort.conf"
 CONF_FILE_NAME="9-the-last-resort.conf"
 
@@ -183,26 +178,26 @@ main(){
   
     zenity --notification --text="Extracting Game Archive" --title="Game Install"
 
-    extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/" "x"
+    extract_archive "$FILES" "$ROMs_FOLDER/$CONF_FILE_NAME/" "x"
     if [ $? -ne 0 ]; then 
         #remove Game folder from ROMs/dox directory
         zenity --error --text="Error: Archive extraction failed \n$FILES"
-        rm -f -r $ROMs_FOLDER/$GAME_NAME
+        rm -f -r $ROMs_FOLDER/$CONF_FILE_NAME
         exit 1
     fi    
     zenity --notification --text="Extraction complete" --title="Game Install"
 
     #Download conf file from github
-    download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$GAME_NAME" "$CONF_FILE_NAME"
+    download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$CONF_FILE_NAME" "$CONF_FILE_NAME"
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
         echo "Failed to download: '$CONF_FILE_URL'"
         zenity --error --text="Error: Conf download failed \n$CONF_FILE_URL"
-        rm -f -r $ROMs_FOLDER/$GAME_NAME
+        rm -f -r $ROMs_FOLDER/$CONF_FILE_NAME
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"
