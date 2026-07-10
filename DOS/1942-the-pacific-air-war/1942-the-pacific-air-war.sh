@@ -6,7 +6,7 @@
 #
 #Runner      : DosBox
 #
-#Description : This script will extract the GOG installer into ROMs/PC folder .
+#Description : This script will extract the ExoDos archive into ROMs/PC folder .
 #              1: Get Game file(s) either an Archived 
 #              2: Create Game folder  in ROMS/dos add conf extenstion to folder name (ESDE needs this)
 #              3: Extract Game Archive if used

@@ -6,7 +6,7 @@
 #
 #Runner      : Dreamm
 #
-#Description : This script will extract the GOG installer into ROMs/PC folder .
+#Description : This script will extract the CDRom into ROMs/PC folder .
 #              1: Get Game file(s) either an Archived  or CD image 
 #              2: Create Game folder  in ROMS/pc add exe extenstion to folder name (ESDE needs this)
 #              3: Extract Game Archive if used
