@@ -219,26 +219,53 @@ get_source_type () {
 main(){
 
     local FILE=""
+    local EXE_PATH=""
 
-    select_archive  #Get Archive location
+    get_source_type
     if [ $? -ne 0 ]; then
         echo "Error Selecting File"
         exit 1
     fi
 
-    zenity --notification --text="Starting Extraction" --title="Game Install"
-
-    extract_archive "$FILES" "$TEMP_FOLDER" "e"
-    if [ $? -ne 0 ]; then 
-        #remove Game folder
-        rm -f -r "$ROMs_FOLDER/$GAME_NAME"
+    if [[ $RADIO_OPTION -le 0 ]]; then
+        echo "Selected: $RADIO_OPTION"
+        zenity --error --text="Error: Selction Unknown : $RADIO_OPTION"
         exit 1
+    elif  [[ $RADIO_OPTION -eq 1 ]]; then #ISO
+
+        select_iso
+        if [ $? -ne 0 ]; then
+            echo "Error Selecting File"
+            exit 1
+        fi
+
+        EXE_PATH=$FILES
+
+        mkdir "$ROMs_FOLDER/$GAME_NAME"
+        
+    elif  [[ $RADIO_OPTION -eq 2 ]]; then #Archive
+
+        select_archive  #Get Archive location
+        if [ $? -ne 0 ]; then
+            echo "Error Selecting File"
+            exit 1
+        fi
+
+        zenity --notification --text="Starting Extraction" --title="Game Install"
+
+        extract_archive "$FILES" "$TEMP_FOLDER" "e"
+        if [ $? -ne 0 ]; then 
+            #remove Game folder
+            rm -f -r "$ROMs_FOLDER/$GAME_NAME"
+            exit 1
+        fi
+
+        FILE=$(find "$TEMP_FOLDER" -type f -name "*.iso" | head -n 1)
+        EXE_PATH=$FILE
     fi
 
-    FILE=$(find "$TEMP_FOLDER" -type f -name "*.iso" | head -n 1)
-
     zenity --notification --text="Extracting files from iso" --title="Game Install"
-    extract_archive "$FILE" "$ROMs_FOLDER/$GAME_NAME" "x"
+    extract_archive "$EXE_PATH" "$ROMs_FOLDER/$GAME_NAME" "x"
     if [ $? -ne 0 ]; then 
         #remove Game folder
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
