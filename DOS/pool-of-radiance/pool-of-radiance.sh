@@ -184,7 +184,7 @@ main(){
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$FILES'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$FILES'."
-        rm -f -r "$ROMs_FOLDER/$GCONF_FILE_NAME"
+        rm -f -r "$ROMs_FOLDER/$CONF_FILE_NAME"
         exit 1
     fi
 
