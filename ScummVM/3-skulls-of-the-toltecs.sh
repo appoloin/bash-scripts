@@ -6,10 +6,9 @@
 #
 #Runner      : Dreamm
 #
-#Description : This script will extract the GOG installer into ROMs/PC folder .
-#              1: Get Game file(s) either an Archived  or CD image 
-#              2: Create Game folder  in ROMS/scummvm nameed toltecs with the extenstion scummvm (ESDE needs this)
-#              3: Extract Game Archive if used
+#Description : This script will extract the GOG installer into ROMs/scummvm folder .
+#              1: Get Game file
+#              2: Create Game folder in ROMS/scummvm nameed toltecs with the extention scummvm (ESDE needs this)
 #              4: Extract Game files from ISO
 
 

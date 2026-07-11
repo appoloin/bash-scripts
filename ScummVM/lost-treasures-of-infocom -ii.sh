@@ -6,11 +6,10 @@
 #
 #Runner      : Scummvm / DOSbox
 #
-#Description : This script will extract the GOG installer into ROMs/PC folder .
-#              1: Get Game file(s) either an Archived  or CD image 
-#              2: Create Game folder  in ROMS/scummvm using SCUMMVM_NAME with the extenstion scummvm (ESDE needs this)
-#              3: Extract Game Archive if used
-#              4: Extract Game files from ISO
+#Description : This script will extract the Archived ISO into ROMs/PC folder .
+#              1: Get Game file(s) either an Archive or CD image 
+#              2: Create Game folder in ROMS/scummvm using SCUMMVM_NAME with the extention scummvm (ESDE needs this)
+#              3: Extract Game Archive then ISO
 
 
 #Constants
