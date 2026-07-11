@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 GAME_NAME="toltecs.scummvm"
 SCUMMVM_NAME="toltecs"
-TEMP_FOLDER="temp"
+TEMP_FOLDER="$HOME/Games/ROMs/scummvm//toltecs.scummvm/temp"
 FILE_FILTER="-ir!SAMPLE.AD -ir!SAMPLE.OPL -ir!WESTERN"
 
 
@@ -253,7 +253,7 @@ main(){
 
         zenity --notification --text="Starting Extraction" --title="Game Install"
 
-        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "e"
+        extract_archive "$FILES" "$TEMP_FOLDER" "e"
         if [ $? -ne 0 ]; then 
             #remove Game folder
             rm -f -r "$ROMs_FOLDER/$GAME_NAME"
@@ -261,7 +261,7 @@ main(){
         fi
 
 
-        FILE=$(find "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" -type f -name "*.iso" | head -n 1)
+        FILE=$(find "$TEMP_FOLDER" -type f -name "*.iso" | head -n 1)
 
         EXE_PATH="$FILE"
     fi    
@@ -280,8 +280,8 @@ main(){
         echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
         #Cleam up temp folder
-        if [ -d  "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" ]; then
-            rm -f -r "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+        if [ -d  "$TEMP_FOLDER" ]; then
+            rm -f -r "$TEMP_FOLDER"
         fi
     else
         zenity --notification --text="Files extraction from iso failed" --title="Game Install"
