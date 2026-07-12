@@ -216,8 +216,6 @@ main(){
     fi
 
 
-    #copy files from temp to game folder "anvil"
-   # mkdir -p "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_FOLDER" 
     #Move files/folders from app folder to main game folder
     find "$TEMP_FOLDER/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
