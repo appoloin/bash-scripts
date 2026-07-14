@@ -36,14 +36,14 @@ ELEMENT_8=("Journey - The Quest Begins"
             "journey-the-quest-begins.conf" 
             "dosbox" 
             "-ir!JOURNEY.CG1 -ir!JOURNEY.EG1 -ir!JOURNEY.EG2 -ir!JOURNEY.EXE -ir!JOURNEY.MG1 -ir!JOURNEY.ZIP" 
-            "https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/lost-treasures-of-infocom/journey-the-quest-begins.conf.conf")
+            "https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/lost-treasures-of-infocom/journey-the-quest-begins.conf")
 ELEMENT_9=("Plundered hearts" "plunderedhearts.scummvm" "plunderedhearts" "-ir!PLUNDERE.DAT" "")
 ELEMENT_10=("Seastalker" "seastalker.scummvm" "seastalker" "-ir!SEASTALK.DAT" "")
 ELEMENT_11=("Sherlock - The Riddle of the Crown Jewels" 
             "sherlock-the-riddle-of-the-crown-jewels.conf" 
             "dosbox" 
             "-ir!SETUP.EXE -ir!SETUP.INF -ir!SHERLOCK.DAT -ir!SHERLOCK.EXE -ir!YES.COM" 
-            "https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/lost-treasures-of-infocom/sherlock-the-riddle-of-the-crown-jewels.conf.conf")
+            "https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/lost-treasures-of-infocom/sherlock-the-riddle-of-the-crown-jewels.conf")
 ELEMENT_12=("Trinity" "trinity.scummvm" "trinity" "-ir!TRINITY.DAT" "")
 ELEMENT_13=("Wishbringer" "wishbringer.scummvm" "wishbringer" "-ir!WISHBRIN.DAT" "")
 
