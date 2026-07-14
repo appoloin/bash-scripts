@@ -4,7 +4,7 @@
 #
 #Source      : Archive / CD image
 #
-#Runner      : Dreamm
+#Runner      : Scummvm
 #
 #Description : This script will extract the an Archived ISO into ROMs/scummvm folder .
 #              1: Get Game file

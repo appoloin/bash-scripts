@@ -4,7 +4,7 @@
 #
 #Source      : Archive / CD image
 #
-#Runner      : Dreamm
+#Runner      : Scummvm
 #
 #Description : This script will extract the an Archived ISO into ROMs/scummvm folder .
 #              1: Get Game file
@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 GAME_NAME="toltecs.scummvm"
 SCUMMVM_NAME="toltecs"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm//toltecs.scummvm/temp"
+TEMP_FOLDER="$HOME/Games/ROMs/scummvm/toltecs.scummvm/temp"
 FILE_FILTER="-ir!SAMPLE.AD -ir!SAMPLE.OPL -ir!WESTERN"
 
 
