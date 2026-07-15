@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Anvil of Dawn
+#Game        : Betrayal at Knodor
 #
 #Source      : GOG installer
 #
