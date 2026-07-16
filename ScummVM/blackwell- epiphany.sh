@@ -302,6 +302,8 @@ main(){
         exit 1
     fi
 
+    echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
+
     #Clean up
     rm -f -r "$TEMP_FOLDER"
     find "$ROMs_FOLDER/$GAME_NAME" -maxdepth 1  -type d \( -iname app -o \
