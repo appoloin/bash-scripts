@@ -18,7 +18,6 @@ GAME_NAME="1942-the-pacific-air-war.conf"
 GAME_DRIVE_C_FOLDER="1942PAW"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/1942-the-pacific-air-war/1942-the-pacific-air-war.conf"
 CONF_FILE_NAME="1942-the-pacific-air-war.conf"
-TEMP_FOLDER="temp"
 
 #Global
 FILES=""  #Game File Location
