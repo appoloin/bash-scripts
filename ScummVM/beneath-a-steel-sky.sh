@@ -191,7 +191,7 @@ main(){
 
     zenity --notification --text="Run Innoextract" --title="Game Install"
 
-    $TEMP_FOLDER/$INNO_EXE -d $ROMs_FOLDER/$GAME_NAME $EXE_PATH
+    "$TEMP_FOLDER/$INNO_EXE" -d "$ROMs_FOLDER/$GAME_NAME" "$EXE_PATH"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$EXE_PATH'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
