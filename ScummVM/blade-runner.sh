@@ -25,6 +25,7 @@ INNO_EXE="innoextract"
 
 #Global
 FILES=""  #Game File Location
+RADIO_OPTION=0 #ISO = 1;  Archive = 2
 
 
 #extract archive  
