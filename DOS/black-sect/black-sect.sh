@@ -13,7 +13,7 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="BlackSec"
+GAME_DRIVE_C_FOLDER="bsect"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/black-sect/black-sect.conf"
 CONF_FILE_NAME="black-sect.conf"
 
