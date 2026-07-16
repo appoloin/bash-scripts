@@ -315,7 +315,7 @@ main(){
                                                             -iname *support -o \
                                                             -iname tmp \) -exec rm -r {} \;
                                             
-    find "$ROMs_FOLDER/$GAME_NAME" -type f \( -iname goggame* -o
+    find "$ROMs_FOLDER/$GAME_NAME" -type f \( -iname goggame* -o \
                                               -iname webcache.zip \) -exec rm {} \;
 
     zenity --notification --text="Game install complete" --title="Game Install"
