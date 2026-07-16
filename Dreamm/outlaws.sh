@@ -23,6 +23,7 @@ DREAMM_CONF_PATH_1="$HOME/.local/share/Aaron Giles/DREAMM/install/lec-outlaws"
 
 #Global
 FILES=""  #Game File Location
+RADIO_OPTION=0 #ISO = 1;  Archive = 2
 
 
 #extract archive  
