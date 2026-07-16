@@ -241,7 +241,7 @@ main(){
         exit 1
     elif  [[ $RADIO_OPTION -eq 1 ]]; then #ISO
 
-        select_exe_installer()
+        select_exe_installer
         if [ $? -ne 0 ]; then
             echo "Error Selecting File"
             exit 1
