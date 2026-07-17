@@ -21,10 +21,6 @@ TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 #Global
 FILES=""  #Game File Location
 
-#Global
-FILES=""  #Game File Location
-
-
 #extract archive  
 #"$1" Archive Path
 #"S2" Output Path
