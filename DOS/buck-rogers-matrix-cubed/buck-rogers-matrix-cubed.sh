@@ -14,7 +14,6 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="BRmatrix"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/buck-rogers-matrix-cubed/buck-rogers-matrix-cubed.conf"
 CONF_FILE_NAME="buck-rogers-matrix-cubed.conf"
 
@@ -197,7 +196,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

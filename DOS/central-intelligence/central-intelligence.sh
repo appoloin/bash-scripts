@@ -14,7 +14,6 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER=""
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/central-intelligence/central-intelligence.conf"
 CONF_FILE_NAME="central-intelligence.conf"
 
@@ -197,7 +196,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

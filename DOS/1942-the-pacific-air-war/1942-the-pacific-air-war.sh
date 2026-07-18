@@ -15,7 +15,6 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="1942-the-pacific-air-war.conf"
-GAME_DRIVE_C_FOLDER="1942PAW"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/1942-the-pacific-air-war/1942-the-pacific-air-war.conf"
 CONF_FILE_NAME="1942-the-pacific-air-war.conf"
 
@@ -198,7 +197,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

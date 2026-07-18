@@ -14,7 +14,6 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="AI"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/alien-incident/alien-incident.conf"
 CONF_FILE_NAME="alien-incident.conf"
 
@@ -197,7 +196,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

@@ -13,7 +13,6 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="bsect"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/black-sect/black-sect.conf"
 CONF_FILE_NAME="black-sect.conf"
 
@@ -221,7 +220,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

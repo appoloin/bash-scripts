@@ -14,9 +14,8 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="blues-brothers-jukebox-adventure"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/blues-brothers-jukebox-adventure/blues-brothers-jukebox-adventure.conf"
-CONF_FILE_NAME="$GAME_DRIVE_C_FOLDER.conf"
+CONF_FILE_NAME="blues-brothers-jukebox-adventure.conf"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 
 #Global
@@ -198,7 +197,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

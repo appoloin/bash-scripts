@@ -15,7 +15,6 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="b-a-t-ii-the-koshan-conspiracy.conf"
-GAME_DRIVE_C_FOLDER="KCD"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/b-a-t-ii-the-koshan-conspiracy/b-a-t-ii-the-koshan-conspiracy.conf"
 CONF_FILE_NAME="b-a-t-ii-the-koshan-conspiracy.conf"
 TEMP_FOLDER="$HOME/Games/ROMs/dos/b-a-t-ii-the-koshan-conspiracy.conf/temp"
@@ -199,7 +198,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

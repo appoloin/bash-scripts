@@ -14,7 +14,6 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="Bureau13"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/bureau13/bureau13.conf"
 CONF_FILE_NAME="bureau13.conf"
 
@@ -197,7 +196,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

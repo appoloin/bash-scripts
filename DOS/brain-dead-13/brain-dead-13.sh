@@ -14,9 +14,8 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_DRIVE_C_FOLDER="brain-dead-13"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/brain-dead-13/brain-dead-13.conf"
-CONF_FILE_NAME="$GAME_DRIVE_C_FOLDER.conf"
+CONF_FILE_NAME="brain-dead-13.conf"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 
 #Global
@@ -198,7 +197,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$CONF_FILE_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

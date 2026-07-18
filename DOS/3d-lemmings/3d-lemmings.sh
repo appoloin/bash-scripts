@@ -14,7 +14,6 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="3d-lemmings.conf"
-GAME_DRIVE_C_FOLDER="Lemmings 3D (1995)"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/3d-lemmings/3d-lemmings.conf"
 CONF_FILE_NAME="3d-lemmings.conf"
 
@@ -222,7 +221,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

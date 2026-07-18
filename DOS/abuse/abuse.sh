@@ -16,7 +16,6 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="abuse.conf"
-GAME_DRIVE_C_FOLDER="Abuse"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/abuse/abuse.conf"
 CONF_FILE_NAME="abuse.conf"
 TEMP_FOLDER="temp"
@@ -200,7 +199,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

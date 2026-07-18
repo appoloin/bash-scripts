@@ -14,7 +14,6 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="are-you-afraid-of-the-dark-the-tale-of-orpheo-s-curse.conf"
-GAME_DRIVE_C_FOLDER="afraid"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/%20are-you-afraid-of-the-dark-the-tale-of-orpheo-s-curse/%20are-you-afraid-of-the-dark-the-tale-of-orpheo-s-curse.conf"
 CONF_FILE_NAME="are-you-afraid-of-the-dark-the-tale-of-orpheo-s-curse.conf"
 
@@ -222,7 +221,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"

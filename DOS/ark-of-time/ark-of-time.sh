@@ -15,7 +15,6 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 GAME_NAME="ark-of-time.conf"
-GAME_DRIVE_C_FOLDER="arktime"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/ark-of-time/ark-of-time.conf"
 CONF_FILE_NAME="ark-of-time.conf"
 TEMP_FOLDER="$HOME/Games/ROMs/dos/ark-of-time.conf/temp"
@@ -199,7 +198,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/$GAME_DRIVE_C_FOLDER/noload.txt"
+    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"
