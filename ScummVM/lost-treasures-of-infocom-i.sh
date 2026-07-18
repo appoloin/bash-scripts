@@ -199,7 +199,6 @@ select_iso() {
     local ARCHIVE_MIME='^application/(iso-image|x-cd-image|x-iso9660-image)$'
 
     FILE=$(zenity --file-selection \
-                  --multiple \
                   --title="Select Game ISO" \
                   --width=800 \
                   --height=500 \
