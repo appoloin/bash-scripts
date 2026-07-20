@@ -14,7 +14,7 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/b-a-t/b-a-t.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/constructor/constructor.conf"
 CONF_FILE_NAME="constructor.conf"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 
