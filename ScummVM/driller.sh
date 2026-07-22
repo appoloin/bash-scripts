@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 SCUMMVM_NAME="spacestationoblivion"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
-TEMP_FOLDER="$ROMs_FOLDER/$AME_NAME/temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 FILE_FILTER=""
 
 

@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 SCUMMVM_NAME="dw"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
-TEMP_FOLDER="$ROMs_FOLDER/$AME_NAME/temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 FILE_FILTER="-ir!*.IDX -ir!*.GRA -ir!*.SCN -ir!*.SMP -ir!*.TXT -ir!*.TXT -ir!FAT.OPL -ir!MIDI.DAT -ir!INDEX -ir!SAMPLE.*"
 
 
