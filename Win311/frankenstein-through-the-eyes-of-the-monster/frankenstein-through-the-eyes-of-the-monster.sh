@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Titantic Adventure Out of Time
+#Game        : Frankenstein Through The Eyes Of The Monster
 #
 #Source      : EXO Dox Archive 
 #
