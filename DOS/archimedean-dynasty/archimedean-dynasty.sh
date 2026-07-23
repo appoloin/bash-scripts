@@ -242,7 +242,7 @@ main(){
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$EXE_PATH'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
-        rm -f -r "$ROMs_FOLDER/$GAME_NAME"
+        rm -f -r "$ROMs_FOLDER/$CONF_FILE_NAME"
         exit 1
     fi
 

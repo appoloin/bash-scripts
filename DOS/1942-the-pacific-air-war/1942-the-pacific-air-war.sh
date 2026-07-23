@@ -191,7 +191,7 @@ main(){
     download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$GAME_NAME" "$CONF_FILE_NAME"
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
-        echo "Failed to download: '$CONF_FILE'"
+        echo "Failed to download: '$CONF_FILE_URL'"
         zenity --error --text="Error: Conf download failed \n$CONF_FILE"
         rm -f -r $ROMs_FOLDER/$GAME_NAME
         exit 1
