@@ -14,7 +14,6 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-GAME_NAME="1942-the-pacific-air-war.conf"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/1942-the-pacific-air-war/1942-the-pacific-air-war.conf"
 CONF_FILE_NAME="1942-the-pacific-air-war.conf"
 
@@ -178,26 +177,26 @@ main(){
   
     zenity --notification --text="Extracting Game Archive" --title="Game Install"
 
-    extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/" "x"
+    extract_archive "$FILES" "$ROMs_FOLDER/$CONF_FILE_NAME/" "x"
     if [ $? -ne 0 ]; then 
         #remove Game folder from ROMs/dox directory
         zenity --error --text="Error: Archive extraction failed \n$FILES"
-        rm -f -r $ROMs_FOLDER/$GAME_NAME
+        rm -f -r $ROMs_FOLDER/$CONF_FILE_NAME
         exit 1
     fi    
     zenity --notification --text="Extraction complete" --title="Game Install"
 
     #Download conf file from github
-    download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$GAME_NAME" "$CONF_FILE_NAME"
+    download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$CONF_FILE_NAME" "$CONF_FILE_NAME"
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
         echo "Failed to download: '$CONF_FILE_URL'"
         zenity --error --text="Error: Conf download failed \n$CONF_FILE"
-        rm -f -r $ROMs_FOLDER/$GAME_NAME
+        rm -f -r $ROMs_FOLDER/$CONF_FILE_NAME
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"
