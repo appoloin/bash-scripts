@@ -14,9 +14,9 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
-GAME_NAME="alice-win.scummvm"
 SCUMMVM_NAME="alice-win"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm/alice-win.scummvm/temp"
+GAME_NAME="$SCUMMVM_NAME.scummvm"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 FILE_FILTER="-ir!SAMPLE.AD -ir!SAMPLE.OPL -ir!WESTERN"
 
 
@@ -271,19 +271,12 @@ main(){
         exit 1
     fi
 
-    if [ -d  "$ROMs_FOLDER/$GAME_NAME" ]; then
+    #Create ES_DE launch file with engine code
+    echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
-        #Create ES_DE launch file with engine code
-        echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
-
-        #Cleam up temp folder
-        if [ -d  "$TEMP_FOLDER" ]; then
-            rm -f -r "$TEMP_FOLDER"
-        fi
-    else
-        zenity --notification --text="Files extraction from iso failed" --title="Game Install"
-        rm -f -r "$ROMs_FOLDER/$GAME_NAME"
-        exit 1
+    #Cleam up temp folder
+    if [ -d  "$TEMP_FOLDER" ]; then
+        rm -f -r "$TEMP_FOLDER"
     fi
     zenity --notification --text="Game install complete" --title="Game Install"
 }

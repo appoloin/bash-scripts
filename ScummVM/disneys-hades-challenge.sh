@@ -272,19 +272,12 @@ main(){
         exit 1
     fi
 
-    if [ -d  "$ROMs_FOLDER/$GAME_NAME" ]; then
+    #Create ES_DE launch file with engine code
+    echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
-        #Create ES_DE launch file with engine code
-        echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
-
-        #Cleam up temp folder
-        if [ -d  "$TEMP_FOLDER" ]; then
-            rm -f -r "$TEMP_FOLDER"
-        fi
-    else
-        zenity --notification --text="Files extraction from iso failed" --title="Game Install"
-        rm -f -r "$ROMs_FOLDER/$GAME_NAME"
-        exit 1
+    #Cleam up temp folder
+    if [ -d  "$TEMP_FOLDER" ]; then
+        rm -f -r "$TEMP_FOLDER"
     fi
     zenity --notification --text="Game install complete" --title="Game Install"
 }

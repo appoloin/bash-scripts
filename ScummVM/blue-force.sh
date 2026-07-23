@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 SCUMMVM_NAME="blueforce"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
-TEMP_FOLDER="$ROMs_FOLDER/$SCUMMVM_NAME.scummvm/temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 FILE_FILTER="-ir!*.rlb"
 
 
