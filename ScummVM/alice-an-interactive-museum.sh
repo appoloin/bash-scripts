@@ -259,7 +259,7 @@ main(){
             exit 1
         fi
 
-        FILE=$(find "$TEMP_FOLDER" -type f -name "*.iso" | head -n 1)
+        FILE=$(find "$TEMP_FOLDER" -type f -iname "*.iso" | head -n 1)
         EXE_PATH=$FILE
     fi
 
