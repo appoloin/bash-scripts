@@ -353,6 +353,7 @@ main(){
                         #remove Game folder from ROMs/dox directory
                         zenity --error --text="Error: Archive extraction failed \n$EXE_PATH"
                         rm -f -r "$ROMs_FOLDER_DOSBOX/$GAME_NAME"
+                        rm -f -r "$TEMP_FOLDER"
                         exit 1
                     fi    
                     zenity --notification --text="Extraction complete" --title="Game Install"
@@ -364,6 +365,7 @@ main(){
                         echo "Failed to download: '$CONF_FILE_URL'"
                         zenity --error --text="Error: Conf download failed \n$CONF_FILE_URL"
                         rm -f -r "$ROMs_FOLDER_DOSBOX/$GAME_NAME"
+                        rm -f -r "$TEMP_FOLDER"
                         exit 1
                     fi
                 else #install in to scummvm folder
@@ -372,6 +374,7 @@ main(){
                     if [ $? -ne 0 ]; then 
                         #remove Game folder
                         rm -f -r "$ROMs_FOLDER_SCUMMVM/$GAME_NAME"
+                        rm -f -r "$TEMP_FOLDER"
                         exit 1
                     fi
 
