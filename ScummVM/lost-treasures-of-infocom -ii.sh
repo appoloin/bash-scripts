@@ -416,32 +416,8 @@ main(){
                         exit 1
                     fi
 
-                    if [ -d  "$ROMs_FOLDER_SCUMMVM/$GAME_NAME" ]; then
-
-                        #Create ES_DE launch file with engine code
-                        echo "$SCUMMVM_NAME" > "$ROMs_FOLDER_SCUMMVM/$GAME_NAME/$GAME_NAME"
-
-                    else
-                        zenity --notification --text="Files extraction from iso failed" --title="Game Install"
-                        rm -f -r "$ROMs_FOLDER_SCUMMVM/$GAME_NAME"
-                        exit 1
-                    fi
-
-                    extract_archive "$EXE_PATH" "$ROMs_FOLDER_SCUMMVM/$GAME_NAME" "e" "$FILE_FILTER"
-                    if [ $? -ne 0 ]; then 
-                        #remove Game folder
-                        rm -f -r "$ROMs_FOLDER_SCUMMVM/$GAME_NAME"
-                        exit 1
-                    fi
-
-                    if [ -d  "$ROMs_FOLDER_SCUMMVM/$GAME_NAME" ]; then
-                        #Create ES_DE launch file with engine code
-                        echo "$SCUMMVM_NAME" > "$ROMs_FOLDER_SCUMMVM/$GAME_NAME/$GAME_NAME"
-                    else
-                        zenity --notification --text="Files extraction from iso failed" --title="Game Install"
-                        rm -f -r "$ROMs_FOLDER_SCUMMVM/$GAME_NAME"
-                        exit 1
-                    fi
+                    #Create ES_DE launch file with engine code
+                    echo "$SCUMMVM_NAME" > "$ROMs_FOLDER_SCUMMVM/$GAME_NAME/$GAME_NAME"
                 fi
                 break
             fi
