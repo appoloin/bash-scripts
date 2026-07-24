@@ -112,7 +112,6 @@ select_archive() {
     local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz)$'
 
     FILE=$(zenity --file-selection \
-                  --multiple \
                   --title="Select Game Archive" \
                   --width=800 \
                   --height=500 \
