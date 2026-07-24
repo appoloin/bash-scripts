@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Infocom Masterpecies
+#Game        : Gnome Ranger
 #
 #Source      : Archive 
 #
