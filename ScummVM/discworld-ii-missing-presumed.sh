@@ -262,6 +262,7 @@ main(){
         if [ $? -ne 0 ]; then 
             #remove Game folder
             rm -f -r "$ROMs_FOLDER/$GAME_NAME"
+            rm -f -r "$TEMP_FOLDER"
             exit 1
         fi
         DISC_NUMBER=$(echo "$item" | grep -o '[0-9][^0-9]*$' | grep -o '[0-9]')
