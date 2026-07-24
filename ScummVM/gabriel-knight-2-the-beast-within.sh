@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Gabriel Knight - Sins of the Fathers#!/bin/bash
+#Game        : Gabriel Knight - Sins of the Fathers
 #
 #Source      : Arhive / ISO 
 #
