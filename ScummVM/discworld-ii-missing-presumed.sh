@@ -110,9 +110,8 @@ select_archive() {
     local FILE
     local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz)$'
 
-    FILE=$(zenity --file-selection \
-                  --multiple \
-                  --title="Select Game Archive" \
+ FILE=$(zenity --file-selection \
+                  --title="Select Game Archive"  \
                   --width=800 \
                   --height=500 \
                   --filename="$HOME/Downloads" \
@@ -146,9 +145,8 @@ select_iso() {
     local FILE
     local ARCHIVE_MIME='^application/(iso-image|x-cd-image|x-iso9660-image)$'
 
-    FILE=$(zenity --file-selection \
-                  --multiple \
-                  --title="Select Game Archive" \
+ FILE=$(zenity --file-selection \
+                  --title="Select Game Archive"  \
                   --width=800 \
                   --height=500 \
                   --filename="$HOME/Downloads" \
