@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Fantasy World Dizzy 
+#Game        : Gateway 2 
 #
 #Source      : EXO DOS Archive
 #
