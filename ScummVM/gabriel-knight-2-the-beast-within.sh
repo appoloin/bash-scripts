@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Gabriel Knight - Sins of the Fathers
+#Game        : Gabriel Knight 2 - The Beast within
 #
 #Source      : Arhive / ISO 
 #
