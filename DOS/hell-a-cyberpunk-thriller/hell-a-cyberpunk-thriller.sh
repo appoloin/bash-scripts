@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Heaven's Dawn
+#Game        : Hell a cyberpunk thriller
 #
 #Source      : EXO DOS Archive
 #
