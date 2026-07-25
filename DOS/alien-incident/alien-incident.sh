@@ -195,7 +195,7 @@ main(){
         exit 1
     fi
 
-    touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
+    touch "$ROMs_FOLDER/$CONF_FILE_NAME/noload.txt"
 
 
     zenity --notification --text="Game install complete" --title="Game Install"
