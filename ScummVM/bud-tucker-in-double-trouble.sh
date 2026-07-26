@@ -149,7 +149,7 @@ select_iso() {
                   --width=800 \
                   --height=500 \
                   --filename="$HOME/Downloads" \
-                  --file-filter="CD Image | *.iso")
+                  --file-filter="CD Image | *.iso  *.ISO")
 
     # Exit if user cancels
     if [ $? -ne 0 ]; then 

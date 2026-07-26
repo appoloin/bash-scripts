@@ -169,7 +169,7 @@ select_cd_image_files() {
                    --separator=$'\n' \
                    --filename="$HOME/Downloads" \
                    --title="Select CD image files" \
-                   --file-filter="CD IMAGE | *.iso *.cue *.bin *.mp3" )
+                   --file-filter="CD Image | *.iso  *.ISO *.cue *.bin *.mp3" )
 
     # Exit if user cancels
     if [ $? -ne 0 ]; then
