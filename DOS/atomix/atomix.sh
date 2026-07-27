@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/atomix/atomix.conf"
 CONF_FILE_NAME="atomix.conf"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/atomix.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/atomix.conf/temp"
 
 #Global
 FILES=""  #Game File Location

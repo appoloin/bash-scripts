@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/b-a-t/b-a-t.conf"
 CONF_FILE_NAME="b-a-t.conf"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/b-a-t.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/b-a-t.conf/temp"
 
 #Global
 FILES=""  #Game File Location

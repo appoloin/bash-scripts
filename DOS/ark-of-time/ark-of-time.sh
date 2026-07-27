@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/ark-of-time/ark-of-time.conf"
 CONF_FILE_NAME="ark-of-time.conf"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/ark-of-time.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/ark-of-time.conf/temp"
 
 #Global
 FILES=""  #Game File Location

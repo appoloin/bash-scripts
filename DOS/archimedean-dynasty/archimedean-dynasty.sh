@@ -19,7 +19,7 @@ CONF_FILE_NAME="archimedean-dynasty.conf"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/archimedean-dynasty.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/archimedean-dynasty.conf/temp"
 
 
 #Global

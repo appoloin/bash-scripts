@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Alien Rampage
+#Game        : Ishar - Legend of the Fortress
 #
 #Source      : GOG installer
 #
@@ -9,17 +9,17 @@
 #Description : This script will extract the GOG installer into ROMs/dos folder .
 #              1: Get Game file
 #              2: Create Game folder in ROMS/dos add conf extention to folder name (ESDE needs this)
-#              3: Extract Game 
+#              3: Extract Game Archive if used
 #              4: Download conf file from github
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/alien-rampage/alien-rampage.conf"
-CONF_FILE_NAME="alien-rampage.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/ishar-legend-of-the-fortress/ishar-legend-of-the-fortress.conf"
+CONF_FILE_NAME="ishar-legend-of-the-fortress.conf"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
-TEMP_FOLDER="$ROMs_FOLDER/alien-rampage.conf/temp"
+TEMP_FOLDER="$HOME/Games/ROMs/dos/albion.conf/temp"
 
 #Global
 FILES=""  #Game File Location
@@ -180,7 +180,7 @@ main(){
 
     zenity --notification --text="Run Innoextract" --title="Game Install"
 
-    $TEMP_FOLDER/$INNO_EXE -d "$ROMs_FOLDER/$CONF_FILE_NAME" "$FILES"
+    $TEMP_FOLDER/$INNO_EXE -d $ROMs_FOLDER/$CONF_FILE_NAME $FILES
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$FILES'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$FILES'."

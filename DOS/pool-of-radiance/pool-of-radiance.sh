@@ -19,7 +19,7 @@ CONF_FILE_NAME="pool-of-radiance.conf"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/pool-of-radiance.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/pool-of-radiance.conf/temp"
 
 #Global
 FILES=""  #Game File Location

@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/all-new-worlds-of-lemmings/all-new-worlds-of-lemmings.conf"
 CONF_FILE_NAME="all-new-worlds-of-lemmings.conf"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/alien-trilogy.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/alien-trilogy.conf/temp"
 
 #Global
 FILES=""  #Game File Location

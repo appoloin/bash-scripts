@@ -16,7 +16,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
 CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/b-a-t-ii-the-koshan-conspiracy/b-a-t-ii-the-koshan-conspiracy.conf"
 CONF_FILE_NAME="b-a-t-ii-the-koshan-conspiracy.conf"
-TEMP_FOLDER="$HOME/Games/ROMs/dos/b-a-t-ii-the-koshan-conspiracy.conf/temp"
+TEMP_FOLDER="$ROMs_FOLDER/b-a-t-ii-the-koshan-conspiracy.conf/temp"
 
 #Global
 FILES=""  #Game File Location
