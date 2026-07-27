@@ -210,7 +210,7 @@ select_exe_installer() {
                    --height=500 \
                    --filename="$HOME/Downloads" \
                    --title="Select GOG EXE Installer" \
-                   --file-filter="GOG Installer | *.exe" )
+                   --file-filter="GOG Installer | *.exe *.EXE" )
 
     # Exit if user cancels
     if [ $? -ne 0 ]; then
