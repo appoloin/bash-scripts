@@ -180,7 +180,7 @@ main(){
 
     zenity --notification --text="Run Innoextract" --title="Game Install"
 
-    $TEMP_FOLDER/$INNO_EXE -d $ROMs_FOLDER/$CONF_FILE_NAME $FILES
+    "$TEMP_FOLDER/$INNO_EXE" -d "$ROMs_FOLDER/$CONF_FILE_NAME" "$FILES"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$FILES'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$FILES'."
