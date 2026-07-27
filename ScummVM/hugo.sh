@@ -14,7 +14,7 @@
 
 #Constants
 ROMs_FOLDER_SCUMMVM="$HOME/Games/ROMs/scummvm"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm/imstall-script-temp"
+TEMP_FOLDER="$ROMs_FOLDER/imstall-script-temp"
               #DISPLAY NAME,  #GAME NAME , SCUMMVM_NAME,  FILE_FILTER, CONF_URL
 ELEMENT_1=("Hugo's House of Horrors" "hugo1.scummvm" "hugo1" "-ir!HUGO_1" "")
 ELEMENT_2=("Hugo II - Whodunit" "hugo2.scummvm" "hugo2" "-ir!HUGO_2" "")

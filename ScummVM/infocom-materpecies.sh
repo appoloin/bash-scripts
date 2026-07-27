@@ -15,7 +15,7 @@
 #Constants
 ROMs_FOLDER_SCUMMVM="$HOME/Games/ROMs/scummvm"
 ROMs_FOLDER_DOSBOX="$HOME/Games/ROMs/dos"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm/imstall-script-temp"
+TEMP_FOLDER="$ROMs_FOLDER/imstall-script-temp"
               #DISPLAY NAME,  #GAME NAME , SCUMMVM_NAME,  FILE_FILTER, CONF_URL
 ELEMENT_1=("Leather Goddess of phobos" "lgop.scummvm" "lgop" "-ir!LEATHER.DAT" "")
  

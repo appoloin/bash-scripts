@@ -14,7 +14,7 @@
 
 #Constants
 ROMs_FOLDER_SCUMMVM="$HOME/Games/ROMs/scummvm"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm/imstall-script-temp"
+TEMP_FOLDER="$ROMs_FOLDER/imstall-script-temp"
               #DISPLAY NAME,  #GAME NAME , SCUMMVM_NAME,  FILE_FILTER, CONF_URL
 ELEMENT_1=("Ingrids Back Part 1" "ingridsback.scummvm" "ingridsback" "-ir!GAMEDAT1.DAT -ir!*.PIC" "")
 ELEMENT_2=("Ingrids Back Part 2" "ingridsback-1.scummvm" "ingridsback-1" "-ir!GAMEDAT2.DAT -ir!*.PIC" "")

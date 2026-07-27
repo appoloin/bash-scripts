@@ -17,7 +17,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 SCUMMVM_NAME="sky"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm/$GAME_NAME/temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
