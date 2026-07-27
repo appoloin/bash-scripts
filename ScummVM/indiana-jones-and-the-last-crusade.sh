@@ -17,7 +17,7 @@ ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
 SCUMMVM_NAME="indy3-vga"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
 TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
-FILE_FILTER="-ir!*FMTOWNS*"
+FILE_FILTER="-ir!*DOS*"
 
 
 #Global
