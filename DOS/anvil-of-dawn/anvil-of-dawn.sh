@@ -22,8 +22,7 @@ GUS_FOLDER="ULTRASND"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
-TEMP_FOLDER="$ROMs_FOLDER/anvil-of-dawn.conf/temp"
-#GAME_FOLDER="anvil"
+TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 
 #Global
 FILES=""  #Game File Location
