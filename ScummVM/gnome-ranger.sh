@@ -14,7 +14,7 @@
 
 #Constants
 ROMs_FOLDER_SCUMMVM="$HOME/Games/ROMs/scummvm"
-TEMP_FOLDER="$HOME/Games/ROMs/scummvm/imstall-script-temp"
+TEMP_FOLDER="$ROMs_FOLDER/imstall-script-temp"
               #DISPLAY NAME,  #GAME NAME , SCUMMVM_NAME,  FILE_FILTER, CONF_URL
 ELEMENT_1=("Gnome Part 1" "gnomeranger.scummvm" "gnomeranger" "-ir!GAMEDAT1.DAT -ir!*.PIC" "")
 ELEMENT_2=("Gnome Part 2" "gnomeranger-1.scummvm" "gnomeranger-1" "-ir!GAMEDAT2.DAT -ir!*.PIC" "")
