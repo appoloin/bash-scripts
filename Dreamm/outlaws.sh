@@ -221,7 +221,7 @@ main(){
             exit 1
         fi
 
-        EXE_PATH=$FILES
+        EXE_PATH="$FILES"
 
         mkdir "$ROMs_FOLDER/$GAME_NAME"
         

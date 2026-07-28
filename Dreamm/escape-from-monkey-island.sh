@@ -245,7 +245,7 @@ main(){
             exit 1
         fi
 
-        EXE_PATH=$FILES
+        EXE_PATH="$FILES"
 
         mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
 

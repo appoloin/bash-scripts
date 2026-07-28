@@ -202,7 +202,7 @@ main(){
         exit 1
     fi
 
-    EXE_PATH=$FILES
+    EXE_PATH="$FILES"
 
     mkdir -p "$TEMP_FOLDER"
    

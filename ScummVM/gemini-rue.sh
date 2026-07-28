@@ -168,7 +168,7 @@ main(){
         exit 1
     fi
 
-    EXE_PATH=$FILES
+    EXE_PATH="$FILES"
 
 
     zenity --notification --text="Downloading Innoextract" --title="Game Install"
