@@ -244,7 +244,7 @@ main(){
         exit 1
     fi
 
-    zenity --notification --text="Run Innoextract" --title="Game Install"
+    zenity --notification --text="Running Innoextract" --title="Game Install"
     $TEMP_FOLDER/$INNO_EXE -d "$TEMP_FOLDER" "$FILES"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$FILES'"

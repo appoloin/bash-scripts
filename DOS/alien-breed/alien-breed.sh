@@ -181,7 +181,7 @@ main(){
         exit 1
     fi
 
-    zenity --notification --text="Run Innoextract" --title="Game Install"
+    zenity --notification --text="Running Innoextract" --title="Game Install"
     #extracting GOG installer with Inno, taking only the app folder
     "$TEMP_FOLDER/$INNO_EXE" -I app -d "$ROMs_FOLDER/$CONF_FILE_NAME" "$EXE_PATH"
     if [ $? -ne 0 ]; then
