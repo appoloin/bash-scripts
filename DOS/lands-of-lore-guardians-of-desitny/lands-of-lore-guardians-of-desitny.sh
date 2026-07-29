@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Archimedean Dynasty
+#Game        : Lands of Lore - Guardians of Desitny
 #
 #Source      : Archive GOG installer
 #
