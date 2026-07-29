@@ -238,8 +238,8 @@ main(){
                                                                 -iname commonappdata -o \
                                                                 -iname *redist -o \
                                                                 -iname scummvm -o \
-                                                                -iname dosbox -o \
-                                                                -iname dosbox_windows -o \
+                                                                -iname dosbox* -o \
+                                                                -iname dosbox*_windows -o \
                                                                 -iname *support -o \
                                                                 -iname tmp \) -exec rm -r {} \;
                                             

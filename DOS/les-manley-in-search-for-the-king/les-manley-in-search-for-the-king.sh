@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Disneys The Lion King
+#Game        : Les Manley in - Search for the King
 #
 #Source      : GOG installer
 #
@@ -14,12 +14,13 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/disney-the-lion-king/disney-the-lion-king.conf"
-CONF_FILE_NAME="disney-the-lion-king.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/les-manley-in-search-for-the-king/les-manley-in-search-for-the-king.conf"
+CONF_FILE_NAME="les-manley-in-search-for-the-king.conf"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
+
 
 #Global
 FILES=""  #Game File Location
@@ -129,6 +130,7 @@ download_file() {
 
 
 
+
 #GET Location of CD images iso, cue/bin
 select_exe_installer() {
     # Use zenity to select files
@@ -152,19 +154,18 @@ select_exe_installer() {
 
 
 
-main(){
 
-    local EXE_PATH=""
+main(){
 
     select_exe_installer  
     if [ $? -ne 0 ]; then
         echo "Error Selecting File"
         exit 1
     fi
-    EXE_PATH="$FILES"
 
     mkdir -p "$TEMP_FOLDER"
    
+    zenity --notification --text="Downloadling Innoextract" --title="Game Install"
     #get innoextract archive from dropbox
     download_file "$INNO_URL" "$TEMP_FOLDER" "$INNO_ARCHIVE_NAME" 
     # Check if wget succeeded
@@ -182,17 +183,15 @@ main(){
     fi
 
     zenity --notification --text="Running Innoextract" --title="Game Install"
-    #extracting GOG installer with Inno, taking only the app folder
-    "$TEMP_FOLDER/$INNO_EXE" -d "$ROMs_FOLDER/$CONF_FILE_NAME" "$EXE_PATH"
+
+    "$TEMP_FOLDER/$INNO_EXE" -d "$ROMs_FOLDER/$CONF_FILE_NAME" "$FILES"
     if [ $? -ne 0 ]; then
-        echo "Failed to extract EXE: '$EXE_PATH'"
-        zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
+        echo "Failed to extract EXE: '$FILES'"
+        zenity --error --text="Error: Innoextract extraction of game exe failed \n'$FILES'."
         rm -f -r "$ROMs_FOLDER/$CONF_FILE_NAME"
         exit 1
     fi
 
-    #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
     #Download conf file from github
     download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$CONF_FILE_NAME" "$CONF_FILE_NAME"

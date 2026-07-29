@@ -256,7 +256,7 @@ main(){
                                                             -iname commonappdata -o \
                                                             -iname *redist -o \
                                                             -iname scummvm -o \
-                                                            -iname dosbox -o \
+                                                            -iname dosbox* -o \
                                                             -iname *support -o \
                                                             -iname tmp \) -exec rm -r {} \;
                                             
