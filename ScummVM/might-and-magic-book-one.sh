@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Might and Magic - Secret of the Inner Sanct
+#Game        : Might and Magic - Swords of Xeen
 #
 #Source      : GOG Installer 
 #
@@ -14,7 +14,7 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
-SCUMMVM_NAME="mm1"
+SCUMMVM_NAME="swordsofxeen"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
 TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
@@ -198,8 +198,8 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$TEMP_FOLDER/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
-    find "$TEMP_FOLDER/__support/save" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/__support/save" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
 
 
