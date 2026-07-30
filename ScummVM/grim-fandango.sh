@@ -279,7 +279,7 @@ main(){
 
         while IFS= read -r -d $'\0' file; do
             TEMP_ISO+=("$file")
-        done < <(find "$TEMP_FOLDER" -type f -name "*.iso" -print0)
+        done < <(find "$TEMP_FOLDER" -type f -iname "*.iso" -print0)
         ISOs=($(printf "%s\n" "${TEMP_ISO[@]}" | sort))
     fi    
 
