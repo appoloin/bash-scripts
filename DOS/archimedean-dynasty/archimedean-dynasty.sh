@@ -130,35 +130,13 @@ download_file() {
 
 
 
-#GET Location of CD images iso, cue/bin
-select_exe_installer() {
-    # Use zenity to select files
-    local files
-    files=$(zenity --file-selection \
-                   --width=800 \
-                   --height=500 \
-                   --filename="$HOME/Downloads" \
-                   --title="Select GOG EXE Installer" \
-                   --file-filter="GOG Installer | *.exe *.EXE" )
-
-    # Exit if user cancels
-    if [ $? -ne 0 ]; then
-        return 1
-    fi
-
-    # Return the selected files
-    FILES="$files"
-}
-
-
-
 #Get the loaction the archive files 
 select_archive() {
     #Get ONLY ONE file
     local FILE
     local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz)$'
 
- FILE=$(zenity --file-selection \
+    FILE=$(zenity --file-selection \
                   --title="Select Game Archive"  \
                   --width=800 \
                   --height=500 \
