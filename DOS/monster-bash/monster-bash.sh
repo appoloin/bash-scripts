@@ -14,11 +14,12 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/monster-bash/monster-bash.conf"
-CONF_FILE_NAME="monster-bash.conf"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
+CONF_NAME="monster-bash"
+CONF_FILE_NAME="$CONF_NAME.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/$CONF_NAME/$CONF_FILE_NAME"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 
 

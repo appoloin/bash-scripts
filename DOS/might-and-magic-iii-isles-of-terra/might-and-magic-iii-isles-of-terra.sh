@@ -14,8 +14,9 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/might-and-magic-iii-isles-of-terra/might-and-magic-iii-isles-of-terra.conf"
-CONF_FILE_NAME="might-and-magic-iii-isles-of-terra.conf"
+CONF_NAME="might-and-magic-iii-isles-of-terra"
+CONF_FILE_NAME="$CONF_NAME.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/$CONF_NAME/$CONF_FILE_NAME"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
