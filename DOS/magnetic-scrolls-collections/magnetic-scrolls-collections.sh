@@ -14,8 +14,9 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/magnetic-scrolls-collections/magnetic-scrolls-collections.conf"
-CONF_FILE_NAME="magnetic-scrolls-collections.conf"
+CONF_NAME="magnetic-scrolls-collections"
+CONF_FILE_NAME="$CONF_NAME.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/$CONF_NAME/$CONF_FILE_NAME"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
 
 #Global

@@ -14,8 +14,9 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/maupiti-island/maupiti-island.conf"
-CONF_FILE_NAME="maupiti-island.conf"
+CONF_NAME="maupiti-island"
+CONF_FILE_NAME="$CONF_NAME.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/$CONF_NAME/$CONF_FILE_NAME"
 FILE_FILTER=""
 
 
