@@ -15,9 +15,11 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/dos"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/the-gene-machine/the-gene-machine.conf"
-CONF_FILE_NAME="the-gene-machine.conf"
+CONF_NAME="the-gene-machine"
+CONF_FILE_NAME="$CONF_NAME.conf"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/$CONF_NAME/$CONF_FILE_NAME"
 TEMP_FOLDER="$ROMs_FOLDER/$CONF_FILE_NAME/temp"
+
 
 #Global
 FILES=""  #Game File Location
