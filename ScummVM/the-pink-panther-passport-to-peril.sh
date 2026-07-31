@@ -1,6 +1,5 @@
 #!/bin/bash
-
-#Game        : The Pink Panther - Hokus Pokus Pink
+#Game        : The Pink Panther - Passport to Peril
 #
 #Source      : ISO
 #
@@ -14,10 +13,10 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
-SCUMMVM_NAME="pokus"
+SCUMMVM_NAME="peril"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
 TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
-FILE_FILTER="-ir!HPP.* -ir!hpp.*"
+FILE_FILTER="-ir!PPTP.* -ir!pptp.*"
 
 
 #Global
