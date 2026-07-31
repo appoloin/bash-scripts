@@ -17,7 +17,7 @@
 ROMs_FOLDER="$HOME/Games/ROMs/windows3x"
 CONF_NAME="titanic-adventure-out-of-time"
 CONF_FILE_NAME="$CONF_NAME.conf"
-CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/DOS/$CONF_NAME/$CONF_FILE_NAME"
+CONF_FILE_URL="https://raw.githubusercontent.com/appoloin/bash-scripts/refs/heads/main/Win311/$CONF_NAME/$CONF_FILE_NAME"
 
 #Global
 FILES=""  #Game File Location
