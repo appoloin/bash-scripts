@@ -193,7 +193,7 @@ main(){
         exit 1
     fi
 
-    EXE_PATH=$(find "$TEMP_FOLDER" -type f -name "*.exe" | head -n 1)
+    EXE_PATH=$(find "$TEMP_FOLDER" -type f -iname "*.exe" | head -n 1)
 
     #get innoextract archive from dropbox
     download_file "$INNO_URL" "$TEMP_FOLDER" "$INNO_ARCHIVE_NAME" 

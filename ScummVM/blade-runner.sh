@@ -268,7 +268,7 @@ main(){
         fi
 
 
-        FILE=$(find "$TEMP_FOLDER" -type f -name "*.exe" | head -n 1)
+        FILE=$(find "$TEMP_FOLDER" -type f -iname "*.exe" | head -n 1)
 
         EXE_PATH="$FILE"
     fi

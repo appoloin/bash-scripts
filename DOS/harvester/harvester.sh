@@ -219,7 +219,7 @@ main(){
         exit 1
     fi
 
-    EXE_PATH=$(find "$TEMP_FOLDER" -type f -name "*.exe" | head -n 1)
+    EXE_PATH=$(find "$TEMP_FOLDER" -type f -iname "*.exe" | head -n 1)
 
     zenity --notification --text="Downloading Innoextract" --title="Game Install"
     #get innoextract archive from dropbox
