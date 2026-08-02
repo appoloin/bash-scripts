@@ -177,9 +177,9 @@ main(){
     echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
     #Cleam up temp folder
- #   if [ -d  "$TEMP_FOLDER" ]; then
-  #      rm -f -r "$TEMP_FOLDER"
-   # fi
+    if [ -d  "$TEMP_FOLDER" ]; then
+        rm -f -r "$TEMP_FOLDER"
+    fi
     
     zenity --notification --text="Game install complete" --title="Game Install"
 }
