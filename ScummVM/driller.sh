@@ -111,7 +111,7 @@ select_archive() {
     local FILE
     local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz)$'
 
- FILE=$(zenity --file-selection \
+    FILE=$(zenity --file-selection \
                   --title="Select Game Archive"  \
                   --width=800 \
                   --height=500 \
@@ -154,6 +154,7 @@ main(){
         exit 1
     fi
 
+    mkdir -p "$ROMs_FOLDER/$GAME_NAME"
     zenity --notification --text="Extracting files from iso" --title="Game Install"
     extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME" "e" "$FILE_FILTER"
     if [ $? -ne 0 ]; then 
