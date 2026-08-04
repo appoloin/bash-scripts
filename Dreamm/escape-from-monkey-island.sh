@@ -268,7 +268,7 @@ main(){
             exit 1
         fi
         
-        EXE_PATH=$(find "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" -maxdepth 1 -type f   -iname "*.exe")
+        EXE_PATH=$(find "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" -mindepth 1 -maxdepth 1 -type f   -iname "*.exe")
         if [ -z "$EXE_PATH" ]; then
             echo "Path Not Found $EXE_PATH"
             zenity --error --text="Error: Game Installer EXE not found.)."

@@ -162,12 +162,12 @@ main(){
         exit 1
     fi
 
-    find "$TEMP_FOLDER/escahell/" -maxdepth 1  -type d \( -iname GENDATA -o \
+    find "$TEMP_FOLDER/escahell/" -mindepth 1 -maxdepth 1  -type d \( -iname GENDATA -o \
                                                         -iname IMAGES -o \
                                                         -iname IMP -o \
                                                         -iname MAPS \) -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
     
-    find "$TEMP_FOLDER/escahell/" -maxdepth 1  -type f \( -iname 'ESCAPE.EXE' \) -exec cp {} "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$TEMP_FOLDER/escahell/" -mindepth 1 -maxdepth 1  -type f \( -iname 'ESCAPE.EXE' \) -exec cp {} "$ROMs_FOLDER/$GAME_NAME" \;
 
 
     #Create ES_DE launch file with engine code

@@ -192,8 +192,8 @@ main(){
     fi
 
     #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/app"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
     #Download conf file from github
     download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$CONF_FILE_NAME" "$CONF_FILE_NAME"
@@ -210,7 +210,7 @@ main(){
 
     #Clean up
     rm -f -r "$TEMP_FOLDER"
-    find "$ROMs_FOLDER/$CONF_FILE_NAME" -maxdepth 1  -type d \( -iname app -o \
+    find "$ROMs_FOLDER/$CONF_FILE_NAME" -mindepth 1 -maxdepth 1  -type d \( -iname app -o \
                                                                 -iname commonappdata -o \
                                                                 -iname *redist -o \
                                                                 -iname scummvm -o \

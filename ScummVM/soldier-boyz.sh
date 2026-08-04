@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#Game        : Faery Tale Adventure II - Halls of the Dead
+#Game        : Soldier Boyz
 #
-#Source      : Archive / CD image
+#Source      : ISO
 #
 #Runner      : Scummvm
 #
@@ -14,13 +14,14 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/scummvm"
-SCUMMVM_NAME="fta2"
+SCUMMVM_NAME="soldierboyz-us"
 GAME_NAME="$SCUMMVM_NAME.scummvm"
 TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
+FILE_FILTER="-ir!BOYZ"
+
 
 #Global
 FILES=""  #Game File Location
-RADIO_OPTION=0 #ISO = 1;  Archive = 2
 
 
 #extract archive  
@@ -101,44 +102,6 @@ extract_archive() {
 
 
 
-
-
-#Get the loaction the archive files 
-select_archive() {
-    #Get ONLY ONE file
-    local FILE
-    local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz)$'
-
- FILE=$(zenity --file-selection \
-                  --title="Select Game Archive"  \
-                  --width=800 \
-                  --height=500 \
-                  --filename="$HOME/Downloads" \
-                  --file-filter="Archive | *.zip *.7z *.rar *.7z.001 *.001 *.zip.001 *.r00")
-
-    # Exit if user cancels
-    if [ $? -ne 0 ]; then 
-        return 1 
-    fi
-    
-    local MIME_TYPE
-    MIME_TYPE=$(file --mime-type -b "$FILE")
-    echo "MIME_TYPE $MIME_TYPE"
-
-    # Check file's MIME type
-    if [[ ! $MIME_TYPE =~ $ARCHIVE_MIME ]]; then
-        echo "Wrong file type selected"
-        zenity --error --text="Error: '$FILE' \nis not a valid \n$ARCHIVE_MIME \nfile \n(MIME type: $MIME_TYPE)."
-        return 1
-    fi
-
-    # Return the selected archive
-    FILES="$FILE"
-    return 0
-}
-
-
-
 select_iso() {
     #Get ONLY ONE file
     local FILE
@@ -174,114 +137,29 @@ select_iso() {
 
 
 
-
-
-
-get_source_type () {
-    # Show the radio dialog
-    local SELECTED
-    SELECTED=$(zenity --list \
-                      --radiolist \
-                      --title="Select Source Type" \
-                      --text="Choose source of game files:" \
-                      --column="Select" \
-                      --column="Source" \
-                      FALSE "ISO" \
-                      FALSE "Archive" )
-    
-
-    # Check if user canceled
-    if [ $? -ne 0 ]; then 
-        return 1 
-    fi
-
-    case "$SELECTED" in
-        "ISO")
-            RADIO_OPTION=1
-            ;;
-        "Archive")
-            RADIO_OPTION=2
-            ;;
-        *)
-            echo "Unknown selection: $SELECTED"
-            RADIO_OPTION=0
-            return 1
-            ;;
-    esac
-
-}
-
-
 main(){
 
     local EXE_PATH=""
     local FILE=""
 
-    get_source_type
+    select_iso
     if [ $? -ne 0 ]; then
         echo "Error Selecting File"
         exit 1
     fi
 
-    if [[ $RADIO_OPTION -le 0 ]]; then
-        echo "Selected: $RADIO_OPTION"
-        zenity --error --text="Error: Selction Unknown : $RADIO_OPTION"
-        exit 1
-    elif  [[ $RADIO_OPTION -eq 1 ]]; then #ISO
+    EXE_PATH="$FILES"
 
-        select_iso
-        if [ $? -ne 0 ]; then
-            echo "Error Selecting File"
-            exit 1
-        fi
-
-        EXE_PATH="$FILES"
-
-        mkdir "$ROMs_FOLDER/$GAME_NAME"
+    mkdir "$ROMs_FOLDER/$GAME_NAME"
         
-    elif  [[ $RADIO_OPTION -eq 2 ]]; then #Archive
-
-        select_archive  #Get Archive location
-        if [ $? -ne 0 ]; then
-            echo "Error Selecting File"
-            exit 1
-        fi
-
-        zenity --notification --text="Starting Extraction" --title="Game Install"
-
-        extract_archive "$FILES" "$TEMP_FOLDER" "e"
-        if [ $? -ne 0 ]; then 
-            #remove Game folder
-            rm -f -r "$ROMs_FOLDER/$GAME_NAME"
-            exit 1
-        fi
-
-
-        FILE=$(find "$TEMP_FOLDER" -type f -iname "*.iso" | head -n 1)
-
-        EXE_PATH="$FILE"
-    fi    
-
     zenity --notification --text="Extracting files from iso" --title="Game Install"
-    extract_archive "$EXE_PATH" "$TEMP_FOLDER" "x" ""
+    extract_archive "$EXE_PATH" "$TEMP_FOLDER" "x" "$FILE_FILTER"
     if [ $? -ne 0 ]; then 
         #remove Game folder
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
         exit 1
     fi
-
-
-    find "$TEMP_FOLDER" -mindepth 1 -maxdepth 1  -type d \( -iname RES -o \
-                                                 -iname VIDEO  \) -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
-    
-    find "$TEMP_FOLDER" -type f \( -iname 'FTA2WIN.EXE' \) -exec cp {} "$ROMs_FOLDER/$GAME_NAME" \;
-
-    if [ $? -ne 0 ]; then 
-        #remove Game folder
-        zenity --notification --text="Extracting files from iso failed" --title="Game Install"
-        rm -f -r "$ROMs_FOLDER/$GAME_NAME"
-        exit 1
-    fi
+    find "$TEMP_FOLDER/BOYZ" -mindepth 1 -mindepth 1 -name "*" -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
     #Create ES_DE launch file with engine code
     echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
@@ -290,7 +168,7 @@ main(){
     if [ -d  "$TEMP_FOLDER" ]; then
         rm -f -r "$TEMP_FOLDER"
     fi
-
+    
     zenity --notification --text="Game install complete" --title="Game Install"
 }
 

@@ -272,7 +272,7 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$TEMP_FOLDER/DOTT"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$TEMP_FOLDER/DOTT"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
 
     #Create ES_DE launch file with engine code

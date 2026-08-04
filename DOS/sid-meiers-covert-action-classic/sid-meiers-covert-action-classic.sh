@@ -193,7 +193,7 @@ main(){
 
     #Move SAVE folder from "__support/save" folder to main game folder
     find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save"  \
-                                                       -maxdepth 1 \
+                                                       -mindepth 1 -maxdepth 1 \
                                                        -name "SAVE"  \
                                                        -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
@@ -212,7 +212,7 @@ main(){
 
     #Clean up
     rm -f -r "$TEMP_FOLDER"
-    find "$ROMs_FOLDER/$CONF_FILE_NAME" -maxdepth 1  -type d \( -iname app -o \
+    find "$ROMs_FOLDER/$CONF_FILE_NAME" -mindepth 1 -maxdepth 1  -type d \( -iname app -o \
                                                                 -iname commonappdata -o \
                                                                 -iname *redist -o \
                                                                 -iname scummvm -o \

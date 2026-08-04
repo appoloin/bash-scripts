@@ -243,7 +243,7 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$TEMP_FOLDER/app/Lands of Lore 1" -maxdepth 1 \(  -iname "*.PAK" -o \
+    find "$TEMP_FOLDER/app/Lands of Lore 1" -mindepth 1 -maxdepth 1 \(  -iname "*.PAK" -o \
                                                             -iname "*.ADL" -o \
                                                             -iname "*.TLK" -o \
                                                             -iname "WESTWOOD.*" -o \

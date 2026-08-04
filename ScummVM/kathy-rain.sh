@@ -199,7 +199,7 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$GAME_NAME/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/app"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
     #Create ES_DE launch file with engine code
     echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
@@ -207,7 +207,7 @@ main(){
 
     #Clean up
     rm -f -r "$TEMP_FOLDER"
-    find "$ROMs_FOLDER/$GAME_NAME" -maxdepth 1  -type d \( -iname app -o \
+    find "$ROMs_FOLDER/$GAME_NAME" -mindepth 1 -maxdepth 1  -type d \( -iname app -o \
                                                             -iname commonappdata -o \
                                                             -iname *redist -o \
                                                             -iname scummvm -o \

@@ -271,14 +271,14 @@ main(){
     fi
 
 
-    find "$TEMP_FOLDER/TUCKER/" -maxdepth 1  -type d \( -iname AUDIO -o \
+    find "$TEMP_FOLDER/TUCKER/" -mindepth 1 -maxdepth 1  -type d \( -iname AUDIO -o \
                                                         -iname FX -o \
                                                         -iname GRAPHICS -o \
                                                         -iname MUSIC -o \
                                                         -iname SPEECH -o \
                                                         -iname SPRITES \) -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
     
-    find "$TEMP_FOLDER/TUCKER/" -maxdepth 1  -type f \( -iname '*.ENC' -o \
+    find "$TEMP_FOLDER/TUCKER/" -mindepth 1 -maxdepth 1  -type f \( -iname '*.ENC' -o \
                                                         -iname '*.PCX' -o \
                                                         -iname '*.TXT' -o \
                                                         -iname '*.DTA' \) -exec cp {} "$ROMs_FOLDER/$GAME_NAME" \;
