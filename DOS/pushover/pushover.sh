@@ -192,7 +192,7 @@ main(){
     fi
 
     #Move SAVE folder from "__support/save" folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save" -mindepth 1 \
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save"  \
                                                        -maxdepth 1 \
                                                        -name "SAVE"  \
                                                        -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;

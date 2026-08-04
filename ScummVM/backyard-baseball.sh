@@ -267,7 +267,7 @@ main(){
     zenity --notification --text="Extracting files from iso" --title="Game Install"
     extract_archive "$EXE_PATH" "$TEMP_FOLDER" "x" "$FILE_FILTER"
     #move game install folder to es-de pc folder
-    find "$TEMP_FOLDER/Game" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$TEMP_FOLDER/Game"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
     if [ $? -ne 0 ]; then 
         #remove Game folder

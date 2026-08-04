@@ -192,8 +192,8 @@ main(){
     fi
 
     #Move SAVE folder from "__support/save" folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save" -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/app"  -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/save"  -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
                                                                                          
 
     #Download conf file from github

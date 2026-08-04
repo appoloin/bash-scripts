@@ -370,7 +370,7 @@ main(){
                 echo "Found $DISPLAY_NAME Filter = $FILE_FILTER"
                 mkdir "$ROMs_FOLDER/$GAME_NAME"
 
-                find "$TEMP_FOLDER/app/$FILE_FILTER" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+                find "$TEMP_FOLDER/app/$FILE_FILTER"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
                 if [ -d  "$ROMs_FOLDER/$GAME_NAME" ]; then
                     #Create ES_DE launch file with engine code

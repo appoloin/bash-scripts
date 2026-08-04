@@ -303,7 +303,7 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$TEMP_FOLDER/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$TEMP_FOLDER/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
     #Create ES_DE launch file with engine code
     echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"

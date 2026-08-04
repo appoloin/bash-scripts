@@ -250,7 +250,7 @@ main(){
 
 
     #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
 
     zenity --notification --text="Downloading GUS Drivers" --title="Game Install"

@@ -267,7 +267,7 @@ main(){
                 echo "Found $DISPLAY_NAME Filter = $FILE_FILTER"
                 
                 #copy files to correct game folder
-                find "$TEMP_FOLDER/app" -mindepth 1 -maxdepth 1 -name "$FILE_FILTER"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+                find "$TEMP_FOLDER/app"  -maxdepth 1 -name "$FILE_FILTER"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
                 #Download conf file from github
                 download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$GAME_NAME" "$GAME_NAME"

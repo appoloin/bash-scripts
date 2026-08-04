@@ -256,7 +256,7 @@ main(){
     fi
 
     #move game install folder to es-de pc folder
-    find "$DREAMM_CONF_PATH" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$DREAMM_CONF_PATH"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
     if [ $? -ne 0 ]; then 
         zenity --notification --text="Dreamm failed to install game" --title="Game Install"
         #remove Game folder

@@ -226,7 +226,7 @@ main(){
 
 
     #Move files/folders from app folder to main game folder
-    find "$TEMP_FOLDER/app/Lands of Lore 2" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$TEMP_FOLDER/app/Lands of Lore 2"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
 
     #Download conf file from github

@@ -198,9 +198,9 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$GAME_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
-    find "$ROMs_FOLDER/$GAME_NAME/__support/save" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
-    find "$ROMs_FOLDER/$GAME_NAME/__support/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/__support/save"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/__support/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
 
 
 

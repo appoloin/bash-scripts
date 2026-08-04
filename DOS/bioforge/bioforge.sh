@@ -194,7 +194,7 @@ main(){
         exit 1
     fi
     #Move files/folders from installer sub folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/app"  -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
     #Download conf file from github
     download_file "$CONF_FILE_URL"  "$ROMs_FOLDER/$CONF_FILE_NAME" "$CONF_FILE_NAME"

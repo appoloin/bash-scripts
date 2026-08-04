@@ -227,8 +227,8 @@ main(){
 
 
     #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support" -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/app"  -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support"  -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
 
 

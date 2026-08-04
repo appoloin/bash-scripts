@@ -199,8 +199,8 @@ main(){
         exit 1
     fi
     #Move files/folders from app folder to main game folder
-    find "$ROMs_FOLDER/$GAME_NAME/app" -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME" \;
-    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/app" -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
+    find "$ROMs_FOLDER/$GAME_NAME/app"  -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$ROMs_FOLDER/$CONF_FILE_NAME/__support/app"  -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$CONF_FILE_NAME" \;
 
     #Create ES_DE launch file with engine code
     echo "$SCUMMVM_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
