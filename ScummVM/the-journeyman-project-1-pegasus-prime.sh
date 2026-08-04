@@ -254,7 +254,7 @@ main(){
 
 
     #Clean up
-  #  rm -f -r "$TEMP_FOLDER"
+    rm -f -r "$TEMP_FOLDER"
 
     zenity --notification --text="Game install complete" --title="Game Install"
 }
