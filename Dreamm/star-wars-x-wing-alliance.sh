@@ -16,7 +16,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/pc"
 GAME_NAME="star-wars-x-wing-alliance.exe"
-TEMP_FOLDER="temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/$temp"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
@@ -241,7 +241,7 @@ main(){
 
         EXE_PATH="$FILES"
 
-        mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+        mkdir -p "$TEMP_FOLDER"
 
     elif  [[ $RADIO_OPTION -eq 2 ]]; then #Archive
 
@@ -251,18 +251,18 @@ main(){
             exit 1
         fi
 
-        mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+        mkdir -p "$TEMP_FOLDER"
 
         zenity --notification --text="Extracting Game Archive" --title="Game Install"
 
-        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "e"
+        extract_archive "$FILES" "$TEMP_FOLDER" "e"
         if [ $? -ne 0 ]; then 
             #remove Game folder
             rm -f -r "$ROMs_FOLDER/$GAME_NAME"
             exit 1
         fi
         
-        EXE_PATH=$(find "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" -mindepth 1 -maxdepth 1 -type f   -iname "*.exe")
+        EXE_PATH=$(find "$TEMP_FOLDER" -mindepth 1 -maxdepth 1 -type f   -iname "*.exe")
         if [ -z "$EXE_PATH" ]; then
             echo "Path Not Found $EXE_PATH"
             zenity --error --text="Error: Game Installer EXE not found.)."
@@ -277,10 +277,10 @@ main(){
 
     zenity --notification --text="Downloading Innoextract" --title="Game Install"
 
-    mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+    mkdir -p "$TEMP_FOLDER"
    
     #get innoextract archive from dropbox
-    download_file "$INNO_URL" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "$INNO_ARCHIVE_NAME" 
+    download_file "$INNO_URL" "$TEMP_FOLDER" "$INNO_ARCHIVE_NAME" 
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
@@ -288,7 +288,7 @@ main(){
     fi
 
     #extract to ROMs/pc/Game folder/temp  
-    extract_archive "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER/$INNO_ARCHIVE_NAME" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "x"
+    extract_archive "$TEMP_FOLDER/$INNO_ARCHIVE_NAME" "$TEMP_FOLDER" "x"
     if [ $? -ne 0 ]; then
         zenity --error --text="Error: Innoextract extract failed."
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
@@ -297,7 +297,7 @@ main(){
 
     zenity --notification --text="Running Innoextract" --title="Game Install"
     #extracting GOG installer with Inno, taking only the app folder
-    "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER/$INNO_EXE" -I app -d "$ROMs_FOLDER/$GAME_NAME" "$EXE_PATH"
+    "$TEMP_FOLDER/$INNO_EXE" -I app -d "$ROMs_FOLDER/$GAME_NAME" "$EXE_PATH"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$EXE_PATH'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
@@ -307,7 +307,7 @@ main(){
     #Move files/folders from app folder to main game folder
     find "$ROMs_FOLDER/$GAME_NAME/app"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
     #delete app folder
-    rm -f -r $ROMs_FOLDER/$GAME_NAME/app
+    rm -f -r "$ROMs_FOLDER/$GAME_NAME/app"
     #dlete temp folder
     rm -f -r "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
     zenity --notification --text="Game install complete" --title="Game Install"

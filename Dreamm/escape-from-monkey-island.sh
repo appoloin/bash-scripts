@@ -18,7 +18,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/pc"
 GAME_NAME="escape-from-monkey-island.exe"
-TEMP_FOLDER="temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
 INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
@@ -135,7 +135,7 @@ select_archive() {
     local FILE
     local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz)$'
 
- FILE=$(zenity --file-selection \
+    FILE=$(zenity --file-selection \
                   --title="Select Game Archive"  \
                   --width=800 \
                   --height=500 \
@@ -247,7 +247,7 @@ main(){
 
         EXE_PATH="$FILES"
 
-        mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+        mkdir -p "$TEMP_FOLDER"
 
     elif  [[ $RADIO_OPTION -eq 2 ]]; then #Archive
 
@@ -257,18 +257,18 @@ main(){
             exit 1
         fi
 
-        mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+        mkdir -p "$TEMP_FOLDER"
 
         zenity --notification --text="Extracting Game Archive" --title="Game Install"
 
-        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "e"
+        extract_archive "$FILES" "$TEMP_FOLDER" "e"
         if [ $? -ne 0 ]; then 
             #remove Game folder
             rm -f -r "$ROMs_FOLDER/$GAME_NAME"
             exit 1
         fi
         
-        EXE_PATH=$(find "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" -mindepth 1 -maxdepth 1 -type f   -iname "*.exe")
+        EXE_PATH=$(find "$TEMP_FOLDER" -mindepth 1 -maxdepth 1 -type f   -iname "*.exe")
         if [ -z "$EXE_PATH" ]; then
             echo "Path Not Found $EXE_PATH"
             zenity --error --text="Error: Game Installer EXE not found.)."
@@ -283,10 +283,10 @@ main(){
 
     zenity --notification --text="Downloading Innoextract" --title="Game Install"
 
-    mkdir -p "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+    mkdir -p "$TEMP_FOLDER"
    
     #get innoextract archive from dropbox
-    download_file "$INNO_URL" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "$INNO_ARCHIVE_NAME" 
+    download_file "$INNO_URL" "$TEMP_FOLDER" "$INNO_ARCHIVE_NAME" 
     # Check if wget succeeded
     if [ $? -ne 0 ]; then
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
@@ -294,7 +294,7 @@ main(){
     fi
 
     #extract to ROMs/pc/Game folder/temp  
-    extract_archive "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER/$INNO_ARCHIVE_NAME" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "x"
+    extract_archive "$TEMP_FOLDER/$INNO_ARCHIVE_NAME" "$TEMP_FOLDER" "x"
     if [ $? -ne 0 ]; then
         zenity --error --text="Error: Innoextract extract failed."
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
@@ -303,7 +303,7 @@ main(){
 
     zenity --notification --text="Running Innoextract" --title="Game Install"
 
-    $ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER/$INNO_EXE -d $ROMs_FOLDER/$GAME_NAME $EXE_PATH
+    "$TEMP_FOLDER/$INNO_EXE" -d "$ROMs_FOLDER/$GAME_NAME" "$EXE_PATH"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$EXE_PATH'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
@@ -311,7 +311,7 @@ main(){
         exit 1
     fi
 
-    rm -f -r "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+    rm -f -r "$TEMP_FOLDER"
 
     zenity --notification --text="Game install complete" --title="Game Install"
 }

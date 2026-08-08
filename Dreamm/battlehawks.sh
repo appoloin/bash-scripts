@@ -15,7 +15,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/pc"
 GAME_NAME="battlehawks.exe"
-TEMP_FOLDER="$HOME/Games/ROMs/pc/$GAME_NAME/temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 DREAMM_PATH="$HOME/Applications/dreamm/dreamm"                        
 DREAMM_INSTALL_PATH="$HOME/.local/share/Aaron Giles/DREAMM/install"
 DREAMM_GAME_ROOT_PATH="$DREAMM_INSTALL_PATH/lec-battlehawks"
@@ -166,7 +166,7 @@ main(){
 
     #Use Dreamm to install the Game
     zenity --notification --text="Dreamm is installing game" --title="Game Install"
-    $DREAMM_PATH -autoinstall "$EXE_PATH"
+    "$DREAMM_PATH" -autoinstall "$EXE_PATH"
     if [ $? -ne 0 ]; then 
         zenity --notification --text="Dreamm failed to find game" --title="Game Install"
         #remove Game folder
@@ -175,7 +175,7 @@ main(){
     fi
 
     #move game install folder to es-de pc folder
-    find "$DREAMM_CONF_PATH"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$DREAMM_CONF_PATH"  -mindepth 1 -maxdepth 1 -name "*"  -exec mv {}  "$ROMs_FOLDER/$GAME_NAME" \;
     if [ $? -ne 0 ]; then 
         zenity --notification --text="Dreamm failed to install game" --title="Game Install"
         #remove Game folder

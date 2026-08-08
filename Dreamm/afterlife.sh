@@ -17,7 +17,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/pc"
 GAME_NAME="afterlife.exe"
-TEMP_FOLDER="temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/$temp"
 DREAMM_PATH="$HOME/Applications/dreamm/dreamm"
 DREAMM_CONF_PATH="$HOME/.local/share/Aaron Giles/DREAMM/install/lec-alife/pc-1.1win-en"
 DREAMM_CONF_PATH_1="$HOME/.local/share/Aaron Giles/DREAMM/install/lec-alife"
@@ -237,19 +237,19 @@ main(){
 
         zenity --notification --text="Starting Extraction" --title="Game Install"
 
-        extract_archive "$FILES" "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" "e"
+        extract_archive "$FILES" "$TEMP_FOLDER" "e"
         if [ $? -ne 0 ]; then 
             #remove Game folder
             rm -f -r "$ROMs_FOLDER/$GAME_NAME"
             exit 1
         fi
         
-        EXE_PATH="$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+        EXE_PATH="$TEMP_FOLDER"
     fi    
 
     #Use Dreamm to install the Game
     zenity --notification --text="Dreamm is installing game" --title="Game Install"
-    $DREAMM_PATH -autoinstall "$EXE_PATH"
+    "$DREAMM_PATH" -autoinstall "$EXE_PATH"
     if [ $? -ne 0 ]; then 
         zenity --notification --text="Dreamm failed to find game" --title="Game Install"
         #remove Game folder
@@ -258,7 +258,7 @@ main(){
     fi
 
     #move game install folder to es-de pc folder
-    find "$DREAMM_CONF_PATH"  -mindepth 1 -maxdepth 1 -name "*"  -exec cp {} -r "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$DREAMM_CONF_PATH"  -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME" \;
     if [ $? -ne 0 ]; then 
         zenity --notification --text="Dreamm failed to install game" --title="Game Install"
         #remove Game folder
@@ -269,8 +269,8 @@ main(){
     rm -f -r "$DREAMM_CONF_PATH_1"
 
     #Cleam up temp folder
-    if [ -d  "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER" ]; then
-       rm -f -r "$ROMs_FOLDER/$GAME_NAME/$TEMP_FOLDER"
+    if [ -d  "$TEMP_FOLDER" ]; then
+       rm -f -r "$TEMP_FOLDER"
     fi
 
     zenity --notification --text="Game install complete" --title="Game Install"
