@@ -85,7 +85,7 @@ main(){
         rm -f -r "$DREAMM_CONF_PATH_1"
         exit 1
     fi
-   # rm -f -r "$DREAMM_CONF_PATH_1"
+    rm -f -r "$DREAMM_CONF_PATH_1"
 
     zenity --notification --text="Game install complete" --title="Game Install"
 }
