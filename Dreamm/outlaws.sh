@@ -16,7 +16,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/pc"
 GAME_NAME="outlaws.exe"
-TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/$temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 DREAMM_PATH="$HOME/Applications/dreamm/dreamm"
 DREAMM_CONF_PATH="$HOME/.local/share/Aaron Giles/DREAMM/install/lec-outlaws/pc-1.0-en"
 DREAMM_CONF_PATH_1="$HOME/.local/share/Aaron Giles/DREAMM/install/lec-outlaws"

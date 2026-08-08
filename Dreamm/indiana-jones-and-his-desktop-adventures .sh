@@ -15,7 +15,7 @@
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/pc"
 GAME_NAME="indydesk.exe"
-TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/$temp"
+TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 DREAMM_PATH="$HOME/Applications/dreamm/dreamm"
 DREAMM_CONF_PATH_1="$HOME/.local/share/Aaron Giles/DREAMM/install/lec-indydesk"
 DREAMM_CONF_PATH="$DREAMM_CONF_PATH_1/pc-en-960301"
