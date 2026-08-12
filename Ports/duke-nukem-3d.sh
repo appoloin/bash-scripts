@@ -15,7 +15,7 @@
 
 #Constants
 ROMs_FOLDER="$HOME/Games/ROMs/ports"
-NAME="dduke-nukem-3diablo"
+NAME="duke-nukem-3d"
 GAME_NAME="$NAME.sh"
 TEMP_FOLDER="$ROMs_FOLDER/$GAME_NAME/temp"
 INNO_URL="https://www.dropbox.com/scl/fi/j0fpcie1r4afohmdjw2yb/innoextract-1.9.7z?rlkey=i0n1k54rr69n7ccosapvmmqbc&st=xqrri3av&dl=1"
