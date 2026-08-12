@@ -4,12 +4,13 @@
 #
 #Source      : Archive GOG
 #
-#Runner      : Scummvm
+#Runner      : Linux Port
 #
-#Description : This script will extract the an Archived ISO into ROMs/port folder .
+#Description : This script will extract the an Archived ISO into ROMs/ports folder .
 #              1: Get Game file
-#              2: Create Game folder in ROMS/scummvm nameed toltecs with the extention scummvm (ESDE needs this)
-#              4: Extract Game files Archive then ISO
+#              2: Create Game folder in ROMS/ports nameed $GME_NAME (ESDE needs this)
+#              3: Extract Game files Archive 
+#              4: Create sh file and noload file
 
 
 #Constants
@@ -190,6 +191,8 @@ main(){
 
     zenity --notification --text="Starting Extraction" --title="Game Install"
 
+    mkdir -p "$TEMP_FOLDER"
+
     extract_archive "$FILES" "$TEMP_FOLDER" "e"
     if [ $? -ne 0 ]; then 
         #remove Game folder
@@ -198,8 +201,6 @@ main(){
     fi
 
     EXE_PATH=$(find "$TEMP_FOLDER" -type f -iname "*.exe" | head -n 1)
-
-    mkdir -p "$TEMP_FOLDER"
 
     #Download Engine and Extract
     zenity --notification --text="Downloading and installing engine" --title="Game Install"
