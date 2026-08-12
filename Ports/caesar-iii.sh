@@ -262,13 +262,13 @@ main(){
 
     #Cleam up temp folder
     rm -f -r "$TEMP_FOLDER"
-  #  find "$ROMs_FOLDER/$GAME_NAME" -mindepth 1 -maxdepth 1  -type d \( -iname app -o \
-   #                                                             -iname commonappdata -o \
-    #                                                            -iname *redist -o \
-     #                                                           -iname scummvm -o \
-      #                                                          -iname dosbox* -o \
-       #                                                         -iname *support -o \
-        #                                                        -iname tmp \) -exec rm -r {} \;
+    find "$ROMs_FOLDER/$GAME_NAME" -mindepth 1 -maxdepth 1  -type d \( -iname app -o \
+                                                                -iname commonappdata -o \
+                                                                -iname *redist -o \
+                                                                -iname scummvm -o \
+                                                                -iname dosbox* -o \
+                                                                -iname *support -o \
+                                                                -iname tmp \) -exec rm -r {} \;
                                             
     find "$ROMs_FOLDER/$GAME_NAME" -type f \( -iname goggame* -o \
                                               -iname webcache.zip \) -exec rm {} \;
