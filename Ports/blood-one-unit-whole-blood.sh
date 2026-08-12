@@ -185,7 +185,7 @@ main(){
     fi
 
     #let org.zdoom.Raze access game folder
-    flatpak override org.zdoom.Raze --user --filesystem="$ROMs_FOLDER/$GAME_NAME"
+    flatpak override "$ENGINE_NAME" --user --filesystem="$ROMs_FOLDER/$GAME_NAME"
 
 
     zenity --notification --text="Downloading Innoextract" --title="Game Install" 
