@@ -252,7 +252,7 @@ main(){
 
 
     #Cleam up temp folder
-    #rm -f -r "$TEMP_FOLDER"
+    rm -f -r "$TEMP_FOLDER"
     find "$ROMs_FOLDER/$GAME_NAME" -mindepth 1 -maxdepth 1  -type d \( -iname app -o \
                                                                 -iname commonappdata -o \
                                                                 -iname *redist -o \
