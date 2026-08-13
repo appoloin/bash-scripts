@@ -23,7 +23,7 @@ INNO_ARCHIVE_NAME="innoextract-1.9.7z"
 INNO_EXE="innoextract"
 FILE_FILTER=""
 ENGINE_NAME="info.exult.exult"
-ENGINE_DATA="$HOME/.var/apps/info.exult.exult/config/"
+ENGINE_DATA="$HOME/.var/app/info.exult.exult/data"
 
 
 
@@ -231,32 +231,51 @@ main(){
 
     zenity --notification --text="Running Innoextract" --title="Game Install"
     mkdir -p "$TEMP_FOLDER/serpent"
-    "$TEMP_FOLDER/$INNO_EXE" -d "$TEMP_FOLDER" "$EXE_ISLE_PATH"
+    "$TEMP_FOLDER/$INNO_EXE" -d "$TEMP_FOLDER/serpent" "$EXE_ISLE_PATH"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$EXE_PATH'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
         exit 1
     fi
-    find "$TEMP_FOLDER/app/serpent"  -mindepth 1 -maxdepth 1 -name "gamedata"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/serpent" \;
-    find "$TEMP_FOLDER/app/serpent"  -mindepth 1 -maxdepth 1 -name "static"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/serpent" \;
+    mkdir -p "$ROMs_FOLDER/$GAME_NAME/serpent"
+    find "$TEMP_FOLDER/serpent"  -mindepth 1 -maxdepth 1 -iname "gamedat" -exec mv {} "$ROMs_FOLDER/$GAME_NAME/serpent" \;
+    find "$TEMP_FOLDER/serpent"  -mindepth 1 -maxdepth 1 -iname "static"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/serpent" \;
 
     mkdir -p "$TEMP_FOLDER/blackgate"
-    "$TEMP_FOLDER/$INNO_EXE" -d "$TEMP_FOLDER" "$EXE_BLACK_PATH"
+    "$TEMP_FOLDER/$INNO_EXE" -d "$TEMP_FOLDER/blackgate" "$EXE_BLACK_PATH"
     if [ $? -ne 0 ]; then
         echo "Failed to extract EXE: '$EXE_PATH'"
         zenity --error --text="Error: Innoextract extraction of game exe failed \n'$EXE_PATH'."
         rm -f -r "$ROMs_FOLDER/$GAME_NAME"
         exit 1
     fi
-    find "$TEMP_FOLDER/app/blackgate"  -mindepth 1 -maxdepth 1 -name "gamedata"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/blackgate" \;
-    find "$TEMP_FOLDER/app/blackgate"  -mindepth 1 -maxdepth 1 -name "static"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/blackgate" \;
+    mkdir -p "$ROMs_FOLDER/$GAME_NAME/blackgate"
+    find "$TEMP_FOLDER/blackgate"  -mindepth 1 -maxdepth 1 -iname "gamedat" -exec mv {} "$ROMs_FOLDER/$GAME_NAME/blackgate" \;
+    find "$TEMP_FOLDER/blackgate"  -mindepth 1 -maxdepth 1 -iname "static"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/blackgate" \;
 
+    # Link flatpak data folder to GAME_NAME, Engine can now see games 
+    rm -Rf "$ENGINE_DATA/blackgate/gamedat"    #remove old game files 
+    rm -Rf "$ENGINE_DATA/blackgate/GAMEDAT"   
+    rm -Rf "$ENGINE_DATA/blackgate/static"    
+    rm -Rf "$ENGINE_DATA/blackgate/STATIC"   
 
+    mkdir -p "$ENGINE_DATA/blackgate/"   #make sure there is folder to link with
+    ln -s -f -n "$ROMs_FOLDER/$GAME_NAME/blackgate/GAMEDAT" "$ENGINE_DATA/blackgate/gamedat"   # Link the folders 
+    ln -s -f -n "$ROMs_FOLDER/$GAME_NAME/blackgate/STATIC" "$ENGINE_DATA/blackgate/static"    
+
+    rm -Rf "$ENGINE_DATA/serpent/gamedat"    #remove old game files 
+    rm -Rf "$ENGINE_DATA/serpent/GAMEDAT"   
+    rm -Rf "$ENGINE_DATA/serpent/static"   
+    rm -Rf "$ENGINE_DATA/serpent/STATIC"   
+
+    mkdir -p "$ENGINE_DATA/serpent/"   #make sure there is folder to link with
+    ln -s -f -n "$ROMs_FOLDER/$GAME_NAME/serpent/GAMEDAT" "$ENGINE_DATA/serpent/gamedat"   # Link the folders 
+    ln -s -f -n "$ROMs_FOLDER/$GAME_NAME/serpent/STATIC" "$ENGINE_DATA/serpent/static"    
 
     touch "$ROMs_FOLDER/$GAME_NAME/noload.txt"
     #Create ES_DE launch file with engine code
-    echo -e "#!/bin/bash\n\n$ROMs_FOLDER/$GAME_NAME/$ENGINE_EXE" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
+    echo -e "#!/bin/bash\n\nflatpak run $ENGINE_NAME" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
     #Cleam up temp folder
     #rm -f -r "$TEMP_FOLDER"
