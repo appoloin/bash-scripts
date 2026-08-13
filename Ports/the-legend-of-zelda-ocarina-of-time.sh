@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : The Legend of Zelda -  Majora's Mask
+#Game        : The Legend of Zelda -  Ocarina of Time
 #
 #Source      : Archive ISO
 #
