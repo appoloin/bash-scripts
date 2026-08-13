@@ -258,7 +258,7 @@ main(){
     echo -e "#!/bin/bash\n\n$ROMs_FOLDER/$GAME_NAME/$ENGINE_EXE" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
     #Cleam up temp folder
-    #rm -f -r "$TEMP_FOLDER"
+    rm -f -r "$TEMP_FOLDER"
     
     zenity --notification --text="Game install complete" --title="Game Install"
 }
