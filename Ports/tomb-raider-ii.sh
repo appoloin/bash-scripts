@@ -227,7 +227,7 @@ main(){
     fi
 
 
-    find "$TEMP_FOLDER/app/data" -mindepth 1 -maxdepth 1 -iname "main.sfc"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/games/tr2" \;
+    find "$TEMP_FOLDER/app/data" -mindepth 1 -maxdepth 1 -iname "main.sfx"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/games/tr2" \;
     mkdir -p "$ROMs_FOLDER/$GAME_NAME/games/tr2/levels"
     find "$TEMP_FOLDER/app/data" -mindepth 1 -maxdepth 1 -iname "*.tr2"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME/games/tr2/levels" \;
     mkdir -p "$ROMs_FOLDER/$GAME_NAME/games/tr1/fmv"
