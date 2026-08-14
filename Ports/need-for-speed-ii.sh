@@ -249,7 +249,7 @@ main(){
     rm -f -r "$TEMP_FOLDER"
     
     zenity --notification --text="Game install complete" --title="Game Install"
-    zenity --notification --text="You must create link to folders fedata and gamedate in ~/nfs2se" --title="Game Install"
+    zenity --notification --text="You must create link to folders fedata and gamedate.\n\n From\n$ROMs_FOLDER/$GAME_NAME/$GAME_NAME\nto\n in ~/nfs2se" --title="Game Install"
 }
 
 
