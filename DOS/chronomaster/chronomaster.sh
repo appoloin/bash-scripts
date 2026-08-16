@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Game        : Chewy - Esc from F5
+#Game        : Chronomaster
 #
 #Source      : EXO DOS Archive
 #
