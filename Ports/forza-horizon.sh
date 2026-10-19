@@ -203,13 +203,13 @@ main(){
     fi
 
     #Move Engine out of temp folder
-    find "$TEMP_FOLDER" -name "$ENGINE_EXE"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME" \;
+    find "$TEMP_FOLDER/PinyonShift"  -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$ROMs_FOLDER/$GAME_NAME" \;
 
     #Create ES_DE launch file with engine code
     echo -e "#!/bin/bash\n\n$ROMs_FOLDER/$GAME_NAME/$ENGINE_EXE" > "$ROMs_FOLDER/$GAME_NAME/$GAME_NAME"
 
     #Cleam up temp folder
-    rm -f -r "$TEMP_FOLDER"
+  #  rm -f -r "$TEMP_FOLDER"
     
     zenity --notification --text="Game install complete" --title="Game Install"
 }
