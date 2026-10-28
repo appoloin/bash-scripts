@@ -19,7 +19,7 @@ WINETRICKS=""
 FLATPAK_ID="io.github.Faugus.faugus-launcher"
 LIBRARY="$HOME/.var/app/$FLATPAK_ID/config/games.json"
 UMU_RUN="$HOME/.var/app/$FLATPAK_ID/data/faugus-launcher/umu-run"
-ENGINE_URL="https://www.dropbox.com/scl/fi/r8in6boy8cubvq67smbkg/azimuth-windows-1-0-2.zip?rlkey=q0sjth0ibrhia1gt1jbn5r9lq&st=76ciu2bo&dl=1"
+ENGINE_URL="https://www.dropbox.com/scl/fi/mpt6uuw59lr6nbv617dqn/azimuth-windows-1-0-3.zip?rlkey=b6waowrkreirtx4ezq1elvjuj&st=n9t6mrwf&dl=1"
 ENGINE_NAME="azimuth-windows.zip"
 ENGINE_EXE="azimuth.exe"
 ROMs_FOLDER="$HOME/Games/ROMs/ports"
@@ -191,7 +191,7 @@ main(){
 
 
     #Create ES_DE launch file with engine code
-    echo -e "#!/bin/bash\n\n$UMU_RUN $GAME_EXE_PATH/$ENGINE_EXE" > "$ROMs_FOLDER/$SHORTCUT_FILE_NAME"
+  #  echo -e "#!/bin/bash\n\n$UMU_RUN $GAME_EXE_PATH/$ENGINE_EXE" > "$ROMs_FOLDER/$SHORTCUT_FILE_NAME"
 
     zenity --notification --text="Game install complete" --title="Game Install"
 }
