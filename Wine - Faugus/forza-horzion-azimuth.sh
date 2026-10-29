@@ -22,6 +22,9 @@ UMU_RUN="$HOME/.var/app/$FLATPAK_ID/data/faugus-launcher/umu-run"
 ENGINE_URL="https://www.dropbox.com/scl/fi/mpt6uuw59lr6nbv617dqn/azimuth-windows-1-0-3.zip?rlkey=b6waowrkreirtx4ezq1elvjuj&st=n9t6mrwf&dl=1"
 ENGINE_NAME="azimuth-windows.zip"
 ENGINE_EXE="azimuth.exe"
+EXTRAS_URL="https://www.dropbox.com/scl/fi/bkvgb68l9vces3lya9qpi/FH2_Extra_Options_0.3.9-release.zip?rlkey=tn4tr57nhzg6bqtr1q6qgrbod&st=ry4pdjyg&dl=1"
+EXTRAS_NAME="azimuth-extras.zip"
+FILE_FILTER="Azimuth"
 ROMs_FOLDER="$HOME/Games/ROMs/ports"
 SHORTCUT_FILE_NAME="$GAME_NAME.sh"
 
@@ -177,7 +180,6 @@ main(){
     if [ $? -ne 0 ]; then
         echo "Failed to download: '$ENGINE_URL'"
         zenity --error --text="Error: Conf download failed \n$ENGINE_URL"
-        rm -f -r $ROMs_FOLDER/$GAME_NAME
         exit 1
     fi
 
@@ -188,6 +190,27 @@ main(){
         exit 1
     fi
 
+    #Download Engine and Extract
+    mkdir -p "$GAME_EXE_PATH"
+    zenity --notification --text="Downloading and installing engine" --title="Game Install"
+    download_file "$EXTRAS_URL" "$GAME_EXE_PATH" "$EXTRAS_NAME"
+    # Check if wget succeeded
+    if [ $? -ne 0 ]; then
+        echo "Failed to download: '$EXTRAS_URL'"
+        zenity --error --text="Error: Conf download failed \n$EXTRAS_URL"
+        exit 1
+    fi
+
+    extract_archive "$GAME_EXE_PATH/$EXTRAS_NAME" "$GAME_EXE_PATH" "x" "$FILE_FILTER"
+    if [ $? -ne 0 ]; then 
+        #remove Game folder
+        zenity --error --text="Error: Archive extraction failed \n$FILES"
+        exit 1
+    fi
+
+    #Move files/folders from app folder to main game folder
+    find "$GAME_EXE_PATH/Azimuth"  -mindepth 1 -maxdepth 1 -name "*"  -exec mv {} "$GAME_EXE_PATH" \;
+    rm -f -r "$GAME_EXE_PATH/Azimuth"
 
 
     #Create ES_DE launch file with engine code
