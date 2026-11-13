@@ -183,7 +183,7 @@ main(){
         exit 1
     fi
 
-    extract_archive "$GAME_EXE_PATH/$ENGINE_NAME" "$GAME_EXE_PATH" "x" "$FILE_FILTER"
+    extract_archive "$GAME_EXE_PATH/$ENGINE_NAME" "$GAME_EXE_PATH" "x" ""
     if [ $? -ne 0 ]; then 
         #remove Game folder
         zenity --error --text="Error: Archive extraction failed \n$FILES"
