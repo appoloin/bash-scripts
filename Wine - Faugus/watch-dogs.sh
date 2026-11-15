@@ -112,38 +112,24 @@ extract_archive() {
 
 
 
-#Get the loaction the archive files 
-select_archive() {
-    #Get ONLY ONE file
-    local FILE
-    local ARCHIVE_MIME='^application/(zip|x-tar|x-gzip|x-bzip2|x-7z-compressed|x-rar-compressed|x-xz|x-rar)$'
-
-    FILE=$(zenity --file-selection \
-                  --title="Select Game Archive"  \
-                  --width=800 \
-                  --height=500 \
-                  --filename="$HOME/Downloads" \
-                  --file-filter="Archive | *.zip *.7z *.rar *.7z.001 *.001 *.zip.001 *.r00 *.RAR")
+#GET Location of CD images iso, cue/bin
+select_exe_installer() {
+    # Use zenity to select files
+    local files
+    files=$(zenity --file-selection \
+                   --width=800 \
+                   --height=500 \
+                   --filename="$HOME/Downloads" \
+                   --title="Select GOG EXE Installer" \
+                   --file-filter="GOG Installer | *.exe *.EXE" )
 
     # Exit if user cancels
-    if [ $? -ne 0 ]; then 
-        return 1 
-    fi
-    
-    local MIME_TYPE
-    MIME_TYPE=$(file --mime-type -b "$FILE")
-    echo "MIME_TYPE $MIME_TYPE"
-
-    # Check file's MIME type
-    if [[ ! $MIME_TYPE =~ $ARCHIVE_MIME ]]; then
-        echo "Wrong file type selected"
-        zenity --error --text="Error: '$FILE' \nis not a valid \n$ARCHIVE_MIME \nfile \n(MIME type: $MIME_TYPE)."
+    if [ $? -ne 0 ]; then
         return 1
     fi
 
-    # Return the selected archive
-    FILES="$FILE"
-    return 0
+    # Return the selected files
+    FILES="$files"
 }
 
 
@@ -156,12 +142,6 @@ main(){
     if ! flatpak info "$FLATPAK_ID" &> /dev/null; then
         zenity --notification --text="Error Faugus Launcher (Flatpak) not found." --title="Game Install"
         echo "Flatpak Faugus Launcher not found"
-        exit 1
-    fi
-
-    select_archive
-    if [ $? -ne 0 ]; then
-        echo "Error Selecting File"
         exit 1
     fi
 
@@ -181,6 +161,13 @@ main(){
 
 
     #Run installer
+    select_exe_installer  #Get Installer location
+    if [ $? -ne 0 ]; then
+        echo "Error Selecting File"
+        exit 1
+    fi
+    INSTALLER="$FILES"
+
     "$UMU_RUN" "$INSTALLER"
     if [ $? -ne 0 ]; then
         echo "Error runnung installer"
